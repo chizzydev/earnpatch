@@ -1,0 +1,1 @@
+import {spawnSync} from 'node:child_process';const r=spawnSync(process.execPath,['g40/tests/run-production.mjs'],{stdio:'inherit',env:{...process.env,G40_BROWSER:'1'},windowsHide:true});process.exit(r.status??1);

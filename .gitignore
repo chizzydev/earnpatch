@@ -1,0 +1,16 @@
+node_modules/
+**/node_modules/
+**/target/
+g40/build/
+g40/.build-*/
+g40/evidence/
+.runtime/
+.verification/
+.env
+.env.*
+!.env.example
+!**/.env.example
+*.log
+*.tmp
+*.tar.gz
+.DS_Store

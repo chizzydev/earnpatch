@@ -1,0 +1,6 @@
+{
+  "marketplace_v2/Cargo.toml": "095e5de39bd0770bb0a5cb929d6228c354a654e1727703352685d9f38554458a",
+  "marketplace_v2/src/lib.rs": "bb1e26a7d7997c6cc4310a874a0abd8863082085954890555c38e99579080cbd",
+  "marketplace_v2/src/model.rs": "cc1cbbbeb6a3fed1c3aeb8f07755b5422e28383d07c93de8c0e8428e6b1a95fd",
+  "marketplace_v2/src/tests.rs": "66e596149c2aa910d142d086e38054367bc333a3abd5594016deba20008d3a3b"
+}

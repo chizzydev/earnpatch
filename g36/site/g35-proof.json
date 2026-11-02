@@ -1,0 +1,86 @@
+{
+  "kind": "RECORDED_FINALIZED_ACCEPTANCE",
+  "network": "testnet",
+  "observed_at": "2026-11-01T00:35:25.419Z",
+  "block": {
+    "height": 275674740,
+    "hash": "mm65EspWd4E7FyqXtoiww2aj15BNgu78bzjomxqWxTf"
+  },
+  "contract": "ep-g32-nightly-20261031.testnet",
+  "product": "g32_nightly_20261031_01",
+  "feature": "safeshare_g35_20261031",
+  "terms_hash": "ab81a09faeb3e12aeebfb5403dcef6833a12bd4609d8165eeb9be5031173caa7",
+  "artifact_sha256": "a9c552ddd98b23e7775c200c8aacbadf93bc73a44227d395916a7c5efe5c9289",
+  "output_sha256": "b772821ef11fe368fe19289aa6067325d8fced3a0e73f5ad5ec792e182a0f943",
+  "settlement": {
+    "sales": "10000000000000000000000",
+    "merchant_claimable": "8000000000000000000000",
+    "developer_withdrawn": "2000000000000000000000"
+  },
+  "operations": [
+    {
+      "title": "Fund the product’s storage",
+      "description": "Merchant reserves storage backing, separate from revenue.",
+      "actor": "Merchant",
+      "method": "fund_storage",
+      "hash": "GaHJGL5qh7zvwpfFHv47KXCnxBAeeCaWheNHnJMEgpxU",
+      "deposit": "0.2"
+    },
+    {
+      "title": "Commission SafeShare",
+      "description": "Existing product, nominated developer, exact price and capped royalty.",
+      "actor": "Merchant",
+      "method": "open_opportunity",
+      "hash": "AfhJBDp896zANuisJb54j5Cefcif4SRXoL8jQG34x35e",
+      "deposit": "0"
+    },
+    {
+      "title": "Accept immutable terms",
+      "description": "Only the nominated developer accepts the recorded agreement.",
+      "actor": "Developer",
+      "method": "accept",
+      "hash": "D2RzPrfcZFoQ8q9kr9zGSodW5SiFqapo11APM76ecnBh",
+      "deposit": "0"
+    },
+    {
+      "title": "Submit the release manifest",
+      "description": "The actual local service’s source manifest is hashed and submitted.",
+      "actor": "Developer",
+      "method": "submit",
+      "hash": "HCrnBHjozkpGMutGebTm17iU4VRC5ds68xmo93nvAvcm",
+      "deposit": "0"
+    },
+    {
+      "title": "Approve & publish",
+      "description": "Merchant approves that exact artifact; approval publishes directly.",
+      "actor": "Merchant",
+      "method": "approve",
+      "hash": "ERtuysazkpqhPUBR7N7SjCEE1ToyqmVDsTr8sXJ9d1sk",
+      "deposit": "0"
+    },
+    {
+      "title": "Purchase one use",
+      "description": "Buyer pays 0.01; 0.002 allocates to developer and 0.008 to merchant.",
+      "actor": "Customer",
+      "method": "purchase",
+      "hash": "G26S41JNNDLdqs2iGKwhHAzFRFKHCwXm9MJRCkock8Hi",
+      "deposit": "0.01"
+    },
+    {
+      "title": "Consume & deliver the CSV",
+      "description": "Buyer consumes their entitlement and receives a real sanitized download.",
+      "actor": "Customer",
+      "method": "consume_use",
+      "hash": "G4z6drzpoc1UVSEtw1UTkW27BJM9oQeDamAWFuHMG5GC",
+      "deposit": "0"
+    },
+    {
+      "title": "Withdraw earned royalties",
+      "description": "Developer receives 0.002 through a verified native transfer and callback.",
+      "actor": "Developer",
+      "method": "withdraw",
+      "hash": "2ujdStbR5dB6kf7yhYfENjX6ihUVmMNG94d59obWsb32",
+      "deposit": "0"
+    }
+  ]
+}

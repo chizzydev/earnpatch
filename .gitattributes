@@ -1,0 +1,3 @@
+# Preserve the exact accepted source bytes and artifact hashes on all platforms.
+* -text
+*.wasm binary

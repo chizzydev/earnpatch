@@ -1,0 +1,7 @@
+import {createHash,createPublicKey,verify,randomBytes} from 'node:crypto';
+export const sha=v=>createHash('sha256').update(v).digest('hex');export const token=()=>randomBytes(32).toString('hex');
+const alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+export function decode(s){let n=0n;for(const c of s){const i=alphabet.indexOf(c);if(i<0)throw Error('Invalid public key');n=n*58n+BigInt(i);}const bytes=[];while(n){bytes.unshift(Number(n&255n));n>>=8n;}for(const c of s){if(c!=='1')break;bytes.unshift(0);}return Buffer.from(bytes);}
+const u=n=>{const b=Buffer.alloc(4);b.writeUInt32LE(n);return b;};const str=s=>Buffer.concat([u(Buffer.byteLength(s)),Buffer.from(s)]);
+export function nepDigest(challenge){return createHash('sha256').update(Buffer.concat([u(2147484061),str(challenge.message),Buffer.from(challenge.nonce,'base64'),str(challenge.recipient),Buffer.from([0])])).digest();}
+export function verifyMessage(challenge,response){if(!response.publicKey?.startsWith('ed25519:'))throw Error('Ed25519 signature required');const raw=decode(response.publicKey.slice(8));if(raw.length!==32)throw Error('Invalid public key');const key=createPublicKey({key:Buffer.concat([Buffer.from('302a300506032b6570032100','hex'),raw]),type:'spki',format:'der'});if(!verify(null,nepDigest(challenge),key,Buffer.from(response.signature||'','base64')))throw Error('INVALID_SIGNATURE');return true;}

@@ -1,0 +1,20 @@
+{
+  "status": "G40_LOCAL_PRODUCTION_VERIFICATION_PASS_RAILWAY_NOT_DEPLOYED",
+  "postgres": "16.15",
+  "database_rows": [
+    {
+      "role": "bridge",
+      "version": "22"
+    },
+    {
+      "role": "paperlane",
+      "version": "9"
+    }
+  ],
+  "real_postgres": true,
+  "windows_https_browser_csv": true,
+  "csv_sha256": "ac27c2e84e211850679ba967b4b5b21189a0b2c758b5cb62362a893dd98e3026",
+  "disposable_database_cleaned": true,
+  "public_deployment": false,
+  "blockchain_mutations": 0
+}

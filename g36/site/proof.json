@@ -1,0 +1,261 @@
+{
+  "status": "G28_FINALIZED_RPC_VERIFIED",
+  "independentAudit": "ACCEPTED_OWNER_VERIFIED_READONLY_EXIT_0",
+  "contract": "g28-rc6f2ff75-0.nearprep-058b1b4f8cf8.testnet",
+  "transactions": [
+    {
+      "id": "account-contract",
+      "hash": "9xpzJEKUC55pAvx3eamrnAejeasKedwMtQDSoqY1f7bD",
+      "expected_failure": null
+    },
+    {
+      "id": "account-merchantA",
+      "hash": "BHHRTYKo8VXRJS7qpiYeviowSZsTUnDihDiniFN2VcZs",
+      "expected_failure": null
+    },
+    {
+      "id": "account-merchantB",
+      "hash": "WxCdK6jPkyiyvnyP9h7fyRnL8wM4FDs3p9zi97Dzqw8",
+      "expected_failure": null
+    },
+    {
+      "id": "account-developerA",
+      "hash": "Mofohv9r3HrZ3Z4R6vVoN5ZWi9xQjpXdLTkHWBRycEm",
+      "expected_failure": null
+    },
+    {
+      "id": "account-developerB",
+      "hash": "6QJwSEt5cgcC92wQNG2hgjmXtHrqXmcSYVFis9kSQhx3",
+      "expected_failure": null
+    },
+    {
+      "id": "account-buyer",
+      "hash": "GjQcqCSe5QUt6di5FZkZG1yMht7SnDNc3xcrsWKww66u",
+      "expected_failure": null
+    },
+    {
+      "id": "account-attacker",
+      "hash": "7RQrJ2HgZkRje26kRfheRSQHcAcNprTXJxCbwCpEexTy",
+      "expected_failure": null
+    },
+    {
+      "id": "deploy",
+      "hash": "HL31yvAxhJTkqgqRqeX3jvvzjohXYxFeLnkdzEHJkD7j",
+      "expected_failure": null
+    },
+    {
+      "id": "initialize",
+      "hash": "2kR2FMbzGSJvtP4o9ccfsfgbMG3Yr3kNKNBi1bKNkicZ",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-free-product",
+      "hash": "28jj87MeZhXznfMijwwpormnNhtXDwrqaqrfeaki8oVg",
+      "expected_failure": "STORAGE_UNFUNDED"
+    },
+    {
+      "id": "product-a",
+      "hash": "CyghkaMRjqt6jshdurzCpnVfyGA3TFvmQ5dJ1u2JAxyr",
+      "expected_failure": null
+    },
+    {
+      "id": "product-b",
+      "hash": "QfSHNvSEKs3n51k2ms26dxEmFSn6mVYQiMNuJvkYm4Y",
+      "expected_failure": null
+    },
+    {
+      "id": "minimal-product",
+      "hash": "AzoXdkXo2o9zgGCfY13tfMY2oYg9NwN7GeJL7pGkWJi7",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-unfunded-opportunity",
+      "hash": "9KkaLUvynPKQ2Ja7GGTSK1Hb8w7PRszhyFPn9TYdiEZd",
+      "expected_failure": "STORAGE_UNFUNDED"
+    },
+    {
+      "id": "reject-squat",
+      "hash": "BpxU1BTBjaRK7YU5T6Qw5eSXXK5N2qaQmSiuqF4a5j1E",
+      "expected_failure": "NOT_OWNER"
+    },
+    {
+      "id": "opportunity-a",
+      "hash": "AAnFi2Ta5u8ewfeQVsbir9pjvtmqfqFEVQXrHaZFhgMv",
+      "expected_failure": null
+    },
+    {
+      "id": "opportunity-b",
+      "hash": "8o9ZUSeh86koe5jmPbD49SvLKFg65rhTFNoEwjtD1YaV",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-wrong-developer",
+      "hash": "6pw63wC8yvG25NcRip4Q7h2oSSimmC19ZL5LBaA8G5XM",
+      "expected_failure": "NOT_DEVELOPER"
+    },
+    {
+      "id": "reject-changed-terms-hash",
+      "hash": "A8mBMzssfaqRRYTUvhfkg9o1DDym4aqGHfTaDcHT8Ay7",
+      "expected_failure": "TERMS_MISMATCH"
+    },
+    {
+      "id": "accept-a",
+      "hash": "Bv35HmgCNX4D33LfcNrmzHk3BPkPzDC4GGj1x9T9r1ZZ",
+      "expected_failure": null
+    },
+    {
+      "id": "accept-b",
+      "hash": "A23pWL1cjSJMLKqdoQWVLb1ZLnZYmrQ8JST7E3eBJH8o",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-term-replacement",
+      "hash": "7poW9cxyLkvQdMoeDVR7ZJBFXWSMDoizCsMwvZgEnv2D",
+      "expected_failure": "DUPLICATE_VERSION"
+    },
+    {
+      "id": "submit-a",
+      "hash": "DYdzoURycV3VprDkXx6MDb7NwzMHb81TYGsdvi3mntRH",
+      "expected_failure": null
+    },
+    {
+      "id": "submit-b",
+      "hash": "GfN8jHrz4g2gqWnCRFU4pWVN1teRBfRu3Nf2y7YbutEw",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-cross-publish",
+      "hash": "DhjPr561Ksxn2U5q8tgber6hZD1bbX4xmAUVx9K8ktKx",
+      "expected_failure": "NOT_OWNER"
+    },
+    {
+      "id": "reject-artifact-substitution",
+      "hash": "FKx8FKmFJBYnMMs7Y5DekNLgZtkpYsBzoPDZTgQqyLg9",
+      "expected_failure": "ARTIFACT_MISMATCH"
+    },
+    {
+      "id": "approve-a",
+      "hash": "AEkAmgp8ww5nwva6zkuweyxo9iU8xf9zNRSjL63L2Weu",
+      "expected_failure": null
+    },
+    {
+      "id": "approve-b",
+      "hash": "3dpXt1DvH9UoPKL2NShsXGxnJXx5dfY6v8dvaaxdrJ5w",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-wrong-price",
+      "hash": "7vw3EVan81V9es2AXt8W66sges2XCaTLDvfH5iLQjpnD",
+      "expected_failure": "EXACT_PRICE_REQUIRED"
+    },
+    {
+      "id": "buy-a-1",
+      "hash": "47miQkDgiTnn79jprryX9yMFDw4gKNoi9zZAFVpGFFrz",
+      "expected_failure": null
+    },
+    {
+      "id": "buy-b-1",
+      "hash": "2Pb2rs43JrLthx7BfkRuMzdy4HFvjDmPRasEfEy61T6w",
+      "expected_failure": null
+    },
+    {
+      "id": "buy-a-2",
+      "hash": "8kE6GGQyoxB2HHvZju2876iVrWfi1mXw6McYHVEHC9X3",
+      "expected_failure": null
+    },
+    {
+      "id": "buy-b-2",
+      "hash": "Fg2X1ccDCmeNh7Afast92tJ6pbPRDX4vekgt6oiyvfCj",
+      "expected_failure": null
+    },
+    {
+      "id": "buy-a-3",
+      "hash": "CVv5pBPbdNgLNHGDyUnNmqmW6b9RhSkHMuB63zsbMTTV",
+      "expected_failure": null
+    },
+    {
+      "id": "buy-b-3",
+      "hash": "3WGHAioicfjZ2isBh3rCqyG7WZXZuukqpUKdkLYxddcu",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-order-replay",
+      "hash": "CpWVzLN5gv9XfjiqNu1b8yPvDQp9KYK7UZyW2BtFu3MQ",
+      "expected_failure": "ORDER_REPLAY"
+    },
+    {
+      "id": "reject-entitlement-theft",
+      "hash": "2TjFHuz1N2X4af9gXD8QQ4ErTdGBLSFKmwDoMwHnwk17",
+      "expected_failure": "NO_PAID_USE"
+    },
+    {
+      "id": "consume-a",
+      "hash": "3V8HxsAAppsuSxtq3AHYT6Ydv3TDotV66hbLRwy1BUbD",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-action-replay",
+      "hash": "89T8SHyM6mh73n6LB6mTnRDwDZkABFGkeWG8eUGno9Ve",
+      "expected_failure": "ACTION_REPLAY"
+    },
+    {
+      "id": "reject-cross-feature-replay",
+      "hash": "A6NMxHQaq7T9RNRh6SCr5oJNtDWBxVqBn9pCBe2uafEC",
+      "expected_failure": "ACTION_REPLAY"
+    },
+    {
+      "id": "pause-b",
+      "hash": "jrBYCqkfueW8AqAKiCGA8an7Dn9uideKcgfwGc11uBq",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-paused-buy",
+      "hash": "9t6376mVeC5ocfXXRsVkZqvbZMEXkDKTxMVVjtCtks2v",
+      "expected_failure": "FEATURE_NOT_LIVE"
+    },
+    {
+      "id": "consume-b",
+      "hash": "DmxTg1WjGAj1UyA8vRnXBw9ijSrSmYZsNwh5j8aPj4Ra",
+      "expected_failure": null
+    },
+    {
+      "id": "resume-b",
+      "hash": "5BibKM3JpVUDu9MqVDVRNKArHxVqW84cM3uewBUzjAz8",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-other-earnings",
+      "hash": "6eyzxE9HMBqywL7BDtdpgskJ4do9PbNxGpyMo8heoSNY",
+      "expected_failure": "INSUFFICIENT_CLAIMABLE"
+    },
+    {
+      "id": "reject-attacker-withdraw",
+      "hash": "wgRDRodqfKSxnWfqMhsN7FHNwSCoqr3ZYQ53iDjKsvK",
+      "expected_failure": "NO_CLAIMABLE"
+    },
+    {
+      "id": "withdraw-a",
+      "hash": "F23CRLV7MTGJRuq679qqA9H9krRKUKu28wTQpKBacpJ8",
+      "expected_failure": null
+    },
+    {
+      "id": "withdraw-b",
+      "hash": "cYCZq78MFUgAgR4tpmneYRqLhqvuWinU3dAfNbqDhuJ",
+      "expected_failure": null
+    },
+    {
+      "id": "reject-forged-callback",
+      "hash": "6VyyHrs5tjp9H4cjwnZgpdVT2xShQsb3UBjZPW1Rt9eW",
+      "expected_failure": "private|PRIVATE_CALLBACK"
+    }
+  ],
+  "accounts": {
+    "contract": "g28-rc6f2ff75-0.nearprep-058b1b4f8cf8.testnet",
+    "merchantA": "g28-rc6f2ff75-1.nearprep-058b1b4f8cf8.testnet",
+    "merchantB": "g28-rc6f2ff75-2.nearprep-058b1b4f8cf8.testnet",
+    "developerA": "g28-rc6f2ff75-3.nearprep-058b1b4f8cf8.testnet",
+    "developerB": "g28-rc6f2ff75-4.nearprep-058b1b4f8cf8.testnet",
+    "buyer": "g28-rc6f2ff75-5.nearprep-058b1b4f8cf8.testnet",
+    "attacker": "g28-rc6f2ff75-6.nearprep-058b1b4f8cf8.testnet"
+  }
+}

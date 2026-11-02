@@ -1,0 +1,47 @@
+{
+  "status": "OFFLINE_VERIFIED_NOT_DEPLOYED",
+  "network": "testnet-proposed",
+  "artifacts": {
+    "earnpatch_commitments_v1": {
+      "bytes": 234194,
+      "sha256": "aa781c945bb142b658d174be519f9fb1ac32d1831ea160de81e92ec3d8cd11f0",
+      "near_code_hash": "CUSY5yYdDX2ePGSkVXwyYt8LPktuKs99otKtFXbtNtGf"
+    },
+    "earnpatch_token_market_v1": {
+      "bytes": 301927,
+      "sha256": "c28137d38d48004628693abc174e235472155abda5d9aa9882e381c06f8f3ba2",
+      "near_code_hash": "E6GNimD5YBavU6qUzarTboSnubrrzzPTjQUcKaewsdzR"
+    },
+    "earnpatch_test_usd": {
+      "bytes": 305113,
+      "sha256": "1812ed4fe7d5fb457c37c911a4d79dd8cc51f4aec24d6752bc0cc72d363b1fb8",
+      "near_code_hash": "2cyXPLZaZ8iMbXds6X9ymrmm7Wz9vTGLig3hcsjt1g4X"
+    }
+  },
+  "source_sha256": {
+    "g38/contracts/Cargo.toml": "6174052d186cb4e73ab469a4f1a3153cae8c130f84dfc3b30c439df3203bae6f",
+    "g38/contracts/shared/model.rs": "b09dc432b44cf6ff24eab23cd61977552dfe176ddc977f01a4c68b4fc71c69e0",
+    "g38/contracts/commitments/Cargo.toml": "515c806c50cc8040dc29bc44ce11e5afc1d73d5b5e2a4f9ce100f09b38182ca4",
+    "g38/contracts/commitments/src/lib.rs": "3b8abc316863575b8ae9c8264822c92554eba912b02828bf43b0baceef6d5a13",
+    "g38/contracts/commitments/src/tests.rs": "64dc668c2e8822f74cf05221d3ed431c2c1c411b89da9e65811ca9c1dfe56142",
+    "g38/contracts/token-market/Cargo.toml": "5988aad1ef7a3d89addc4e7758ff8c51fd911a5b00a2e8433aa4a9e33c83d9e8",
+    "g38/contracts/token-market/src/lib.rs": "5c970361be52772a22cd1757d96a63e72d365268d37fc7cc375b8a7cc89fe8f7",
+    "g38/contracts/token-market/src/tests.rs": "42f7cfe48492fe672788f75eef168af4ab933f35867534bdc7e3dedf242b061c",
+    "g38/test-token/Cargo.toml": "d5c030eb42a4c0dafab5a4e52129228bd3079af2a016184c870bc2f91783892a",
+    "g38/test-token/src/lib.rs": "0c4d6be9b690edcf017d4d7f44dd2ac0560ab5b72b44c8d82f97235a1f41e1ec",
+    "g38/contracts/Cargo.lock": "0ebb1babe73bd8397722fcb16a372f39cb24e420912e1aa605c37d8c2083b6ab",
+    "g38/test-token/Cargo.lock": "adbb300181e1727f9e2a9ef54ca384be1f75f8d857b980ab600ac27718c27d9d"
+  },
+  "native_rust_tests": {
+    "commitments": 7,
+    "token_market": 8,
+    "failed": 0
+  },
+  "compiled_wasm_host": [
+    "commitments",
+    "token-market",
+    "test-token"
+  ],
+  "protocol_gas_metered": false,
+  "sandbox_or_chain_execution": false
+}

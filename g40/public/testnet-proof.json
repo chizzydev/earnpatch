@@ -1,0 +1,236 @@
+{
+  "status": "G39A_CONTINUATION_FINALIZED_ORIGINAL_ATTEMPT_UNKNOWN",
+  "network": "testnet",
+  "finalized_block": {
+    "height": 275879372,
+    "hash": "HjS1zrBNuJjNEA5DD9x4H9YCApFBzetzg5t3HPDmz9r3"
+  },
+  "base_plan_sha256": "291753458bf58a28652731e54f91a604de2afb4ef4ec3a3503ae9e3aa6dd3a6f",
+  "continuation_plan_sha256": "cb9790c02bcd742a8f7103e8a8b473707037e02164ccfc2d9d31c36b8720f244",
+  "original_wrong_price_attempt": "UNKNOWN_PRESERVED_OUTSIDE_FINALIZED_COVERAGE",
+  "transactions": [
+    {
+      "step": "create-source",
+      "hash": "2m62kMffJK2zSXfXuJMUUXTZ89rsXkVe37evdcF5qvsL",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "create-escrow",
+      "hash": "9Uxf78LeFhenuEPMn5VLAHsqVajLEmnWokCagdezJkCz",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "create-market",
+      "hash": "J9Byc6JyTTyrkDTAZGV5fQnqRBWTZ7LBFngYrwMNKNMk",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "create-child-token",
+      "hash": "BD4TH8LN5cSrFcNKqguBckaTH4kURP7i68GTaeJGSKvG",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "merchant-gas-storage",
+      "hash": "8HSrb558YqWggNag9bDgASnTKDChCKLXPiNgwNKTQTg8",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "deploy-source",
+      "hash": "FTGSjqcPWGizQYaR6EaGn1FVTJLBmobVeuJvSCi1FHLs",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "init-source",
+      "hash": "GHyiGr8KpKxwW81BsRKad4vi7WruC8FEE3kXe5udzHn9",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "deploy-escrow",
+      "hash": "6xkkJVnKva1ft1qsgSGVWGx916Lp2kLV6ip5yZE4tQCu",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "init-escrow",
+      "hash": "5Kkbvv2HzUNbFFQWF8P9vm4pRzoXo9WUctvfpMRxxVXS",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "deploy-market",
+      "hash": "29146KzZXbR7CkHX3ysfRyumbvqnh4eARokrxFTX788c",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "init-market",
+      "hash": "7g1Yppk3vyj1UgUy3sNYCadZFXdmY71meHi5vVWK4yYM",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "deploy-token",
+      "hash": "Akc69jw9mb6Z7dLhw1yP8vtNgmNhiQyDqXsnxFdQEE9Y",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "init-token",
+      "hash": "24nkQ8zBWHzN6cjGdTnPfKex3GqMKp3MGcAQfVFFDZcT",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "product",
+      "hash": "CC7Rq2DEE2AnBWunsTKU12vuJ2hWxKFqKgMLF8Pkrg8x",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "commission",
+      "hash": "FrTffYZHu5NvEnwvzBiHfdQ3nZj5gqWf19ju1SXVgQ7x",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "source-accept",
+      "hash": "CupXrmUkG8PSJvCXvYjJwK8XZXVVVQTVsGFqYhubNMYu",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "grant-success",
+      "hash": "3N8FFPhqJxsV7m2h5ozaDErmEbAzbCMbAzWxuxRdTuKm",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "commit-success",
+      "hash": "2YGLts6d6M6gVLC1pLEG4hbb5Cn9yuwJ7n7ZsZ4dreUT",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "source-submit",
+      "hash": "5S6pP5g4yAmhcm86qzjMhNEbXVqVDBiS3soYqmvaX87N",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "source-approve",
+      "hash": "CPBNeJxWG6YGRrPagKiWhponvaKsEbQdQLQaB9J8tUza",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "verify-delivery",
+      "hash": "BVG7em6og8KJWcv678a3J7qoqnBMdN1oJ6V6cNmKt2Yf",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "release",
+      "hash": "99wrhmPN5Nnq3xQkuVa9ALR28de4guG6gyBaM3cZbSxP",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "grant-refund",
+      "hash": "HBpXxzAu75SKgepHHEqfmSeE5zCwN7ktuqkdLaC2vzfs",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "commit-refund",
+      "hash": "6vpcxB1PQwoJ8vRBYjGGw6tBfhe7PhXcp1kybG38JV7e",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "cancel",
+      "hash": "EgcQzCPuKCmioKRPTWj1oLNXNf1t9jHJQF98M8uDyFZo",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "refund",
+      "hash": "HdupNvu1smKt3SfRMg5GjkgdKoPzaW9ZDY8ZfaH4wbhc",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "reject-double-refund",
+      "hash": "6ik1DTMbqCV2BjCNWnTKAdgnUVkVQr2czbD2EsAprz2q",
+      "state": "FINAL_EXPECTED_REJECTION"
+    },
+    {
+      "step": "register-market",
+      "hash": "6F5vHiJtJVXTGkHM66VEXvSw6DAbYJoqxgzfXHifsRki",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "register-developer",
+      "hash": "25rhtE3QTG9kjPwU59rUrvpvoreSp3XDo2QKuk7CLXWJ",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "register-customer",
+      "hash": "CfGKzNFcswt5ZEnjKHKZzQDNxrFSUDX8nk7uGCxEDSri",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "token-inventory",
+      "hash": "GRNyNKZHFXn6vdzWTDxSd8h6uMeRyktnLEjeoFdvdfri",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "import",
+      "hash": "7W1Eu7bTvQ63qt8TpapoDZkXQzzHL1vKmMR2nGyccMLX",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "token-accept",
+      "hash": "GPxH15MoYxfxGQcPadvJ6HMfSJzm1vhbG3C1FZ8eQoej",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "reject-impostor",
+      "hash": "EdX6bnXqoPfaV8UWwjaFXNmZ3MRo1ysdPkj64gnGized",
+      "state": "FINAL_EXPECTED_REJECTION"
+    },
+    {
+      "step": "reject-no-balance",
+      "hash": "8xh6SvtKGqLYKguhtZDgLScJpVLkd1chEt9K2nDra7oQ",
+      "state": "FINAL_EXPECTED_REJECTION"
+    },
+    {
+      "step": "buy-1",
+      "hash": "6k3mUbwQ8uTJHrD8xXUn1BpuQr3DXx59e7pnoNhhMciP",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "buy-2",
+      "hash": "AQVRCRdMoyxSZC2nCv9BarBY9doeWZS3dhnRuj7qCpPi",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "buy-3",
+      "hash": "GF9t6Rh2oih4ySSyxscZnBqgRDfSco9wrDHcUUsgANX6",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "wrong-price-extra-attempt-1",
+      "hash": "GjtFNEKxLvo2BHLmxkP5K4WDEo82vtt2MDaXxWZU6Sja",
+      "state": "FINAL_REFUNDED"
+    },
+    {
+      "step": "consume-export",
+      "hash": "EmWfa6pwWPxY2mSNFTmJZwmXhZysYMW5rRVrspz7dxM5",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "withdraw-developer",
+      "hash": "2XKJC8XNCPEmfXAssukDdDro36Jci1VVg8Cb9FQicTdz",
+      "state": "FINAL_SUCCESS"
+    },
+    {
+      "step": "withdraw-merchant",
+      "hash": "DsoD6MsAuQLFC4BpzU674yqDuXkkNL2mVeUripP6k9zL",
+      "state": "FINAL_SUCCESS"
+    }
+  ],
+  "token_balances": {
+    "bc5877315199a3a08190d2fe72e30908faa33874e9c8517a8db75fa27c9aeb4e": "968000",
+    "earnpatch3.testnet": "29000",
+    "earnpatch2.testnet": "3000",
+    "ep-g38-token-20261101.testnet": "0"
+  },
+  "remaining_credits": "2",
+  "csv": {
+    "sha256": "b772821ef11fe368fe19289aa6067325d8fced3a0e73f5ad5ec792e182a0f943",
+    "bytes": 179,
+    "consumption": "EmWfa6pwWPxY2mSNFTmJZwmXhZysYMW5rRVrspz7dxM5"
+  },
+  "live_mutations": false
+}
