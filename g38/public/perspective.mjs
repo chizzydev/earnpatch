@@ -1,0 +1,7 @@
+export function perspective(actor,state,readiness,source){
+ const who={merchant:['Paperlane','Merchant'],developer:['Maya','Invited developer'],alex:['Alex Morgan','Customer'],avery:['Avery Quinn','Customer']}[actor]||['Unknown','Read only'],claim=state.claims[actor],next=readiness.next;
+ let task=next?(next.actor===actor?'Your next step: '+next.label+'.':'Waiting for '+next.actor+': '+next.label+'.'):'Token checkout is ready. Open Paperlane to purchase or use an export.';
+ if(actor==='developer'&&source.stage==='open')task='Your next step: accept the invited native agreement in Commission & delivery.';
+ if(['alex','avery'].includes(actor)){if(claim?.status==='Held')task=state.campaign?.cancelled?'Your contribution can be refunded.':state.campaign?.verified?'Review delivery and choose whether to release your own grant.':'Your grant is held; the merchant/developer delivery step is next.';else if(state.campaign&&!state.campaign.funded&&!state.campaign.cancelled&&state.now<10)task='You can contribute to this campaign. A development grant does not purchase export access.';}
+ return {name:who[0],role:who[1],task,claim:claim?.status||'No contribution',credits:state.credits[actor]||0,next_url:next?.url||'/finance'};
+}

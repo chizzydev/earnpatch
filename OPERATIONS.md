@@ -1,6 +1,6 @@
 # Engineering setup and operation
 
-This is the accepted EarnPatch G40 source snapshot. The public application offers wallet-free evaluation with simulated finances, genuine SafeShare CSV processing, an independent Paperlane integration, and authentic read-only NEAR Testnet evidence. Public financial signing is disabled. No hosting or financial deployment is triggered by these commands.
+This repository contains the maintained EarnPatch product source. The public application offers wallet-free evaluation with simulated finances, genuine SafeShare CSV processing, an independent Paperlane integration, and authentic read-only NEAR Testnet evidence. Public financial signing is disabled. No hosting or financial deployment is triggered by these commands.
 
 ## Local development and owner walkthrough
 
@@ -28,9 +28,9 @@ npm run verify
 
 The HTTPS fixture needs OpenSSL. Windows defaults to Git for Windows' OpenSSL; override G40_OPENSSL with an installed executable path if necessary. Browser tests use the locked Playwright package and installed Microsoft Edge. Other systems need a separately installed supported browser; no browser is silently downloaded. The tests use isolated sessions/ports and never approve wallets. On Windows, scripts/WINDOWS_VERIFY.ps1 -Browser performs the same gates.
 
-Rust sources are marketplace_v2 (native marketplace), g38/contracts (commitment escrow and token settlement), and g38/test-token (test-only NEP-141 token, no redemption value). scripts/contracts.sh tests and compiles to ignored target directories, never replacing the accepted WASMs. Rust/wasm32 and the pinned near-sdk 5.29.1 dependencies must be available. G38 Cargo locks are preserved. The original G27 source did not include an accepted Cargo.lock; its initial dependency resolution is explicit. Recompilation with another compiler/dependency resolution is not a claim of byte-identical WASM. Accepted binaries and every financial source fingerprint are verified by npm run verify. No Rust compilation is claimed for this source-copy pass.
+Rust sources are marketplace_v2 (native marketplace), g38/contracts (commitment escrow and token settlement), and g38/test-token (test-only NEP-141 token, no redemption value). scripts/contracts.sh tests and compiles to ignored target directories, never replacing the accepted WASMs. Rust/wasm32 and the pinned near-sdk 5.29.1 dependencies must be available. G38 Cargo locks are preserved. The native marketplace dependency lock is included. Recompilation with another compiler/dependency resolution is not a claim of byte-identical WASM. Accepted binaries and every financial source fingerprint are verified by npm run verify. No Rust compilation is claimed for this source-copy pass.
 
-The G40 PostgreSQL fixture is g40/tests/local-postgres.py: it requires the existing documented PostgreSQL 16.15 Ubuntu cache (or adapt a separately reviewed installed toolchain), Node >=22 and OpenSSL. It creates and removes its own loopback-only cluster and never takes an application DB URL. accepted/LOCAL_VERIFICATION.json records the actual completed original G40 run; it is not a newly fabricated release-copy database run. Windows HTTPS/CSV and portable-start checks are independently rerun in this copy.
+Database integration was previously verified against PostgreSQL 16.15; owner-specific VM bootstrap tooling is excluded. Windows HTTPS/CSV and portable-start checks are independently rerun in this copy.
 
 ## Railway only
 
@@ -51,7 +51,7 @@ Set these on both apps using Railway variables:
 | NODE_OPTIONS | Recommended --max-old-space-size=128 |
 | RAILWAY_ENVIRONMENT_ID | Injected by Railway |
 
-G40_DATABASE_TRANSPORT=verify-tls and a trusted G40_DATABASE_CA are optional alternatives; certificate verification is not disabled. g40/.env.example contains placeholders only. Never commit a real dotenv file. Never enable historical owner-wallet flags in this public service. Paperlane's integration uses a fixed private destination with HMAC/time/nonce checks; public mutation APIs require same-origin sessions.
+G40_DATABASE_TRANSPORT=verify-tls and a trusted G40_DATABASE_CA are optional alternatives; certificate verification is not disabled. g40/.env.example contains placeholders only. Never commit a real dotenv file. This public service does not expose owner-wallet financial request endpoints. Paperlane's integration uses a fixed private destination with HMAC/time/nonce checks; public mutation APIs require same-origin sessions.
 
 Each app uses one dual-stack listener on 8080, one replica initially, /health readiness, 120-second deployment health timeout, ALWAYS restart policy, 10-second overlap and 30-second drain. Railway's healthcheck Host is accepted only on health routes. Runtime DB failure marks the process unready and stops it. Start with conservative limits (512 MB per app, 1 GB PostgreSQL, small DB volume); billing depends on actual usage. Keep sleeping/serverless disabled for predictable private calls. Backups and restore verification require owner configuration after deployment.
 
@@ -61,6 +61,9 @@ Actual Railway image execution, private routing, domains, backups and resource m
 
 ## Integrity and security
 
-accepted/SOURCE_BASELINE.json records the selected accepted files and original build fingerprints. accepted/PREPARATION_CHANGES.json lists the narrow release-only changes. Contract sources, four accepted WASMs and the seven-file approved SafeShare release remain byte-identical. npm run verify checks those fingerprints and scans source (or the Git index with --staged) for prohibited files and credential patterns. Unit-test DB credentials are explicit fictional placeholders, not production credentials.
+accepted/SOURCE_SHA256.json records the curated source fingerprint. Contract sources, four accepted WASMs and the seven-file approved SafeShare release remain byte-identical. npm run verify checks those fingerprints and scans source (or the Git index with --staged) for prohibited files and credential patterns. Unit-test DB credentials are explicit fictional placeholders, not production credentials.
 
 The application includes original public transaction references and approved sanitized CSV evidence only. No private operation journals, signed payloads, local DB contents, user CSV inputs, credentials or historical Git directory are included. The original engineering evidence remains separately preserved. No hackathon README or promotional content has been authored here.
+
+
+The Live NEAR proof navigation opens `/verified`. It requires no owner wallet or private runtime evidence. POST requests to `/api/testnet/` are rejected; only the explicit code-verified GET state read is exposed. Owner pilot consoles, incident journals, authorization files, VM transfer scripts and historical engineering reports are kept outside the public release. Generation-number source paths are retained where required by current imports.

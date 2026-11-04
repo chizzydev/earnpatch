@@ -3,7 +3,7 @@ const root=fileURLToPath(new URL('./',import.meta.url));
 function isolatedCookies(req,res,prefix='g38'){need(/^g[0-9]+$/.test(prefix),'COOKIE_NAMESPACE_REQUIRED');req.headers.cookie=(req.headers.cookie||'').split(';').map(v=>v.trim()).filter(v=>new RegExp('^'+prefix+'_(studio|paperlane)=').test(v)).map(v=>v.replace(new RegExp('^'+prefix+'_'),'g37_')).join('; ');const set=res.setHeader.bind(res);res.setHeader=(name,value)=>set(name,name.toLowerCase()==='set-cookie'?(Array.isArray(value)?value.map(v=>v.replace(/^g37_/,prefix+'_')):value.replace(/^g37_/,prefix+'_')):value);}
 
 export class FinanceClient extends BridgeClient{
- async capability(scope){const native=await super.capability(scope),f=await this.request('/v1/finance/access',{scope,subject:'alex'}),sku=f.capability;return {...native,stage:sku?.accepted?'live':'awaiting_token_agreement',terms:{price:sku?.price||'7000',royalty_bps:sku?.bps||2500,cap:sku?.cap||'3000'},terms_hash:sku?.terms_hash,artifact:sku?.artifact||null,asset:f.asset};}
+ async capability(scope){const native=await super.capability(scope),f=await this.request('/v1/finance/access',{scope,subject:'alex'}),sku=f.capability;return {...native,stage:sku?.paused?'paused':sku?.accepted?'live':'awaiting_token_agreement',terms:{price:sku?.price||'7000',royalty_bps:sku?.bps||2500,cap:sku?.cap||'3000'},terms_hash:sku?.terms_hash,artifact:sku?.artifact||null,asset:f.asset};}
  async access(scope,subject){const f=await this.request('/v1/finance/access',{scope,subject});return {...f,purchases:f.orders};}
  purchase(scope,subject,request_id){return this.request('/v1/finance/purchase',{scope,subject,request_id});}
  prepare(scope,subject,input){return this.request('/v1/finance/jobs/prepare',{scope,subject,...input});}

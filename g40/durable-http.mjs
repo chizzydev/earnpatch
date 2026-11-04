@@ -1,7 +1,7 @@
-import http from 'node:http';import {Readable} from 'node:stream';import {EventEmitter} from 'node:events';import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
+import {randomBytes} from 'node:crypto';import http from 'node:http';import {Readable} from 'node:stream';import {EventEmitter} from 'node:events';import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
 import {restore,snapshot} from '../g39/persistence.mjs';import {createBackend} from './backends.mjs';
 import {expireEvaluation} from './retention.mjs';
-export const SECURITY={'cache-control':'no-store','strict-transport-security':'max-age=31536000','x-content-type-options':'nosniff','x-frame-options':'DENY','referrer-policy':'no-referrer','permissions-policy':'camera=(), microphone=(), geolocation=()','content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"};
+export const SECURITY={'cache-control':'no-store','strict-transport-security':'max-age=31536000','x-content-type-options':'nosniff','x-frame-options':'DENY','referrer-policy':'no-referrer','permissions-policy':'camera=(), microphone=(), geolocation=()','content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://storage.herewallet.app; connect-src 'self' https://rpc.testnet.fastnear.com https://archival-rpc.testnet.fastnear.com; frame-src 'self' blob:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"};
 class Capture extends EventEmitter{
  constructor(resolve,reject){super();this.statusCode=200;this.headers={};this.parts=[];this.size=0;this.resolve=resolve;this.reject=reject;}
  setHeader(k,v){this.headers[k.toLowerCase()]=v;}getHeader(k){return this.headers[k.toLowerCase()];}
@@ -12,7 +12,7 @@ class Capture extends EventEmitter{
 }
 export function durableServer({config,db,staticResponse=()=>null,backend=createBackend,transport}){
  const runtime=fs.mkdtempSync(path.join(os.tmpdir(),'earnpatch-g40-'));let tail=Promise.resolve(),queued=0,closing=false,poisoned=false;const buckets=new Map();
- const respond=(res,status,value,headers={})=>{if(res.destroyed)return;res.writeHead(status,{...headers,...SECURITY,'content-type':headers['content-type']||'application/json; charset=utf-8'});res.end(Buffer.isBuffer(value)?value:JSON.stringify(value));};
+ const respond=(res,status,value,headers={})=>{if(res.destroyed)return;const html=(headers['content-type']||'').startsWith('text/html'),nonce=randomBytes(18).toString('base64'),security={...SECURITY};if(html){security['content-security-policy']=security['content-security-policy'].replace("script-src 'self'", "script-src 'self' 'nonce-"+nonce+"'");value=Buffer.from((Buffer.isBuffer(value)?value.toString():String(value)).replace('</head>','<meta name="wallet-csp-nonce" content="'+nonce+'"></head>'));}res.writeHead(status,{...headers,...security,'content-type':headers['content-type']||'application/json; charset=utf-8'});res.end(Buffer.isBuffer(value)?value:JSON.stringify(value));};
  const server=http.createServer(async(req,res)=>{try{
   const url=new URL(req.url,'http://local');if(!req.url.startsWith('/')||req.url.startsWith('//')||req.url.includes('\\'))return respond(res,400,{error:'INVALID_TARGET'});
   const publicHost=new URL(config.publicOrigin).host,privateHost=config.role==='bridge'?new URL(config.internalBridge).host:'paperlane.railway.internal:8080',health=['/health','/readyz','/livez'].includes(url.pathname)&&!url.search&&req.method==='GET';

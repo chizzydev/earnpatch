@@ -7,7 +7,7 @@ export function config(env=process.env){
  assert(/^[a-f0-9]{64}$/.test(env.G40_INTEGRATION_KEY||'')&&new Set(env.G40_INTEGRATION_KEY).size>=8,'RANDOM_SERVER_INTEGRATION_KEY_REQUIRED');
  const port=Number(env.PORT||8080);assert(Number.isInteger(port)&&port>0&&port<=65535,'PORT_REQUIRED');
  assert(!['G30_ENABLE_WRITES','G33_ALLOW_OWNER_WALLET_ACTIONS','G39_ALLOW_OWNER_WALLET_ACTIONS'].some(k=>env[k]&&env[k]!=='0'),'PUBLIC_FINANCIAL_SIGNING_FORBIDDEN');
- return {role:env.G40_SERVICE==='earnpatch'?'bridge':'paperlane',service:env.G40_SERVICE,earnpatch,paperlane,publicOrigin:env.G40_SERVICE==='earnpatch'?earnpatch:paperlane,internalBridge:privateOrigin(env.G40_BRIDGE_INTERNAL_ORIGIN||'http://earnpatch.railway.internal:8080'),key:env.G40_INTEGRATION_KEY,port,host:'::',databaseUrl:env.DATABASE_URL,databaseMode:env.G40_DATABASE_TRANSPORT||'railway-private',databaseCA:env.G40_DATABASE_CA,railwayEnvironment:env.RAILWAY_ENVIRONMENT_ID};
+ return {allowLiveActions:false,role:env.G40_SERVICE==='earnpatch'?'bridge':'paperlane',service:env.G40_SERVICE,earnpatch,paperlane,publicOrigin:env.G40_SERVICE==='earnpatch'?earnpatch:paperlane,internalBridge:privateOrigin(env.G40_BRIDGE_INTERNAL_ORIGIN||'http://earnpatch.railway.internal:8080'),key:env.G40_INTEGRATION_KEY,port,host:'::',databaseUrl:env.DATABASE_URL,databaseMode:env.G40_DATABASE_TRANSPORT||'railway-private',databaseCA:env.G40_DATABASE_CA,railwayEnvironment:env.RAILWAY_ENVIRONMENT_ID};
 }
 export function databaseConfig(url,{mode='railway-private',ca,railwayEnvironment,localTest=false}={}){
  const u=new URL(url);assert(['postgres:','postgresql:'].includes(u.protocol)&&u.hostname&&u.pathname.length>1,'POSTGRES_URL_REQUIRED');if(!localTest)assert(u.username&&u.password,'POSTGRES_PASSWORD_REQUIRED');

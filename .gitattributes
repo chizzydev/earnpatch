@@ -1,3 +1,6 @@
 # Preserve the exact accepted source bytes and artifact hashes on all platforms.
 * -text
 *.wasm binary
+
+# Bundled upstream CSS/HTML templates intentionally preserve their internal whitespace.
+g41/wallet/runtime.mjs whitespace=-blank-at-eol

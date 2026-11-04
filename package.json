@@ -10,12 +10,13 @@
     "start": "node scripts/local.mjs",
     "build": "node g40/build.mjs",
     "pretest": "npm run build",
-    "test": "node --test g40/tests/*.test.mjs g37/tests/*.test.mjs g38/tests/*.test.mjs",
+    "test": "node --test --test-concurrency=1 g37/tests/*.test.mjs g38/tests/*.test.mjs g40/tests/*.test.mjs g41/tests/*.test.mjs",
     "verify": "node scripts/verify-release.mjs",
     "test:https": "node g40/tests/run-production.mjs",
     "test:browser": "node scripts/browser.mjs",
     "test:wasm": "node scripts/G27_WASM_HOST_CHECK.mjs g28/artifacts/earnpatch_marketplace_v2.wasm && node g38/wasm-host.mjs commitments && node g38/wasm-host.mjs token-market && node g38/wasm-host.mjs test-token",
-    "test:local-browser": "node scripts/local-browser.mjs"
+    "test:local-browser": "node scripts/local-browser.mjs",
+    "test:evaluation": "node g41/tests/browser.mjs"
   },
   "dependencies": {
     "pg": "8.16.3"

@@ -12,3 +12,6 @@ body[data-route=home] main{padding-top:28px;padding-bottom:36px;max-width:1420px
 
 /* Keep 80/20 labels readable at tablet widths instead of compressing text into 20%. */
 @media(min-width:681px) and (max-width:950px){.settlement-compact-amounts{display:flex;justify-content:space-between;gap:15px;margin-bottom:14px}.settlement-compact-amounts>span{font-size:19px;font-weight:650}.settlement-compact-amounts>span+span{text-align:right}.settlement-compact-amounts .unit{font-size:10px}.settlement-compact-amounts small{display:block;color:#e1ebf4;font-size:10px;margin-top:4px}.settlement-bar{min-height:30px;height:30px}.settlement-bar>span{padding:3px 0}.settlement-bar strong,.settlement-bar small{display:none}.settlement-bar i{display:block;font-size:11px;font-style:normal}}
+
+header .header-cta{white-space:nowrap;flex-shrink:0}header nav{gap:1rem}.settlement-compact-amounts{display:flex!important;justify-content:space-between;gap:1rem}.settlement-bar>span strong,.settlement-bar>span small{display:none}.settlement-bar>span:first-child{flex:0 0 80%}.settlement-bar>span:last-child{flex:0 0 20%}.settlement-bar{min-height:48px}.settlement-bar i{font-size:14px}pre,code{max-width:100%;overflow:auto}@media(max-width:1150px){header nav{font-size:14px;gap:.7rem}.header-cta{padding:.75rem}}
+.settlement-compact-amounts small{color:#e1ebf4!important}

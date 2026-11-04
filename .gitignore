@@ -14,3 +14,14 @@ g40/evidence/
 *.tmp
 *.tar.gz
 .DS_Store
+
+__pycache__/
+*.pyc
+
+# Private engineering reports and owner execution tooling stay outside this release.
+/G4[1-5]_*.md
+/G4[1-5]_*.json
+/g42/
+/g43/
+/g44/
+/g45/

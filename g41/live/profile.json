@@ -1,0 +1,23 @@
+{
+  "network": "testnet",
+  "escrow": "ep-g38-escrow-20261101.testnet",
+  "market": "ep-g38-token-20261101.testnet",
+  "token": "testusd.ep-g39-source-20261101.testnet",
+  "source": "ep-g39-source-20261101.testnet",
+  "feature": {
+    "owner": "bc5877315199a3a08190d2fe72e30908faa33874e9c8517a8db75fa27c9aeb4e",
+    "product": "paperlane_g39_20261101",
+    "feature": "safeshare_g39_01",
+    "version": 1
+  },
+  "artifact": "a9c552ddd98b23e7775c200c8aacbadf93bc73a44227d395916a7c5efe5c9289",
+  "developer": "earnpatch2.testnet",
+  "token_decimals": 6,
+  "symbol": "TestEPUSD",
+  "accepted_code": {
+    "source": "DVzLWoUDQdaZVZzqnP5k3iqH5smk2PMpvzoNUt9d3iBp",
+    "escrow": "CUSY5yYdDX2ePGSkVXwyYt8LPktuKs99otKtFXbtNtGf",
+    "market": "E6GNimD5YBavU6qUzarTboSnubrrzzPTjQUcKaewsdzR",
+    "token": "2cyXPLZaZ8iMbXds6X9ymrmm7Wz9vTGLig3hcsjt1g4X"
+  }
+}
