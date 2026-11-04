@@ -12,7 +12,7 @@ npm run build
 npm start
 ~~~
 
-Open http://127.0.0.1:4580 for EarnPatch, /studio for the server-backed merchant/developer lifecycle, /finance for simulated escrow/token accounting, and /verified for accepted transaction references. Paperlane is a separate service at http://127.0.0.1:4581. Use the handoff button in the financial workspace after approving/importing a release and accepting token terms. The normal EarnPatch frontend also has its own three-role evaluation journey.
+Open http://127.0.0.1:4580/start for the role-by-role technical guide, then http://127.0.0.1:4580 for EarnPatch, /studio for the server-backed merchant/developer lifecycle, /finance for simulated escrow/token accounting, and /verified for accepted transaction references. Paperlane is a separate service at http://127.0.0.1:4581. Use the handoff button in the financial workspace after approving/importing a release and accepting token terms. The main application, Studio and Finance share the current workspace. A fresh EarnPatch session always starts with the open sample SafeShare invitation. To write a new brief, select Merchant in Studio and confirm Reset this workspace; this explicitly creates a draft. Reset affects the shared evaluation scenario, not historical Testnet records. Native purchases and Paperlane token credits belong to separate agreements. Opening Paperlane directly creates its own workspace; use the Finance handoff to continue the already approved release.
 
 The launcher binds only to loopback. It has no wallet signer and creates new local state under ignored .runtime/local; it does not read the original engineering workspace or browser history. State persists across restart. Stop with Ctrl+C. If a port is occupied, choose EARNPATCH_LOCAL_PORT and PAPERLANE_LOCAL_PORT; no existing process is terminated. Do not delete a state lock while a process owns it. Production uses PostgreSQL, not this single-process local file adapter.
 
@@ -26,15 +26,15 @@ npm run test:wasm
 npm run verify
 ~~~
 
-The HTTPS fixture needs OpenSSL. Windows defaults to Git for Windows' OpenSSL; override G40_OPENSSL with an installed executable path if necessary. Browser tests use the locked Playwright package and installed Microsoft Edge. Other systems need a separately installed supported browser; no browser is silently downloaded. The tests use isolated sessions/ports and never approve wallets. On Windows, scripts/WINDOWS_VERIFY.ps1 -Browser performs the same gates.
+The HTTPS fixture needs OpenSSL. Windows defaults to Git for Windows' OpenSSL; override G40_OPENSSL with an installed executable path if necessary. Browser tests use the locked Playwright package and installed Microsoft Edge. These checked-in browser gates currently require Microsoft Edge (channel msedge), including on other operating systems. No browser is silently downloaded. Local application startup does not require browser automation. The tests use isolated sessions/ports and never approve wallets. On Windows, scripts/WINDOWS_VERIFY.ps1 -Browser performs the same gates.
 
 Rust sources are marketplace_v2 (native marketplace), g38/contracts (commitment escrow and token settlement), and g38/test-token (test-only NEP-141 token, no redemption value). scripts/contracts.sh tests and compiles to ignored target directories, never replacing the accepted WASMs. Rust/wasm32 and the pinned near-sdk 5.29.1 dependencies must be available. G38 Cargo locks are preserved. The native marketplace dependency lock is included. Recompilation with another compiler/dependency resolution is not a claim of byte-identical WASM. Accepted binaries and every financial source fingerprint are verified by npm run verify. No Rust compilation is claimed for this source-copy pass.
 
-Database integration was previously verified against PostgreSQL 16.15; owner-specific VM bootstrap tooling is excluded. Windows HTTPS/CSV and portable-start checks are independently rerun in this copy.
+Portable real-PostgreSQL verification is `npm run test:postgres`. It requires PostgreSQL 16+ binaries (initdb, postgres, pg_ctl, createdb), Node and OpenSSL. Set PG_BINDIR if pg_config is not on PATH; optionally set PG_SHAREDIR and PG_LIBDIR for an unpacked distribution. Run as a normal user on Linux. Unset DATABASE_URL and G40_TEST_DATABASE_URL for this child process: the runner refuses existing database URLs, initializes a unique loopback-only disposable cluster/database, runs the actual HTTPS/service/CSV/cap/restart tests, checks JSONB exact-string persistence, stops its cluster and removes only its own temporary directory. Existing application databases are never used. The local fixture uses trust authentication solely for its disposable loopback cluster. Outputs go to ignored g40/evidence/POSTGRES_VERIFICATION.json and logs. Missing prerequisites fail; they are not treated as passing.
 
 ## Railway only
 
-Run npm run build. The generated g40/build is the deployment context for both apps, containing its own Dockerfile and railway.json. Do not upload the workspace root. Create exactly three services in one Railway project/environment: earnpatch, paperlane and postgres. PostgreSQL alone has a persistent volume; keep its connection private with no public proxy. No extra frontend host or reverse proxy is needed.
+Run npm run build, then npm run verify:package. The build validates every Docker COPY input before acknowledging success. The generated g40/build is the deployment context for both apps, containing its own Dockerfile and railway.json. Do not upload the workspace root. Create exactly three services in one Railway project/environment: earnpatch, paperlane and postgres. PostgreSQL alone has a persistent volume; keep its connection private with no public proxy. No extra frontend host or reverse proxy is needed.
 
 Set these on both apps using Railway variables:
 
@@ -67,3 +67,15 @@ The application includes original public transaction references and approved san
 
 
 The Live NEAR proof navigation opens `/verified`. It requires no owner wallet or private runtime evidence. POST requests to `/api/testnet/` are rejected; only the explicit code-verified GET state read is exposed. Owner pilot consoles, incident journals, authorization files, VM transfer scripts and historical engineering reports are kept outside the public release. Generation-number source paths are retained where required by current imports.
+
+## Local container acceptance
+
+`npm run test:container` requires access to an existing Docker daemon. It builds the generated g40/build context, creates one temporary private network and three disposable containers (EarnPatch, independent Paperlane and PostgreSQL), exercises actual service/CSV/cap/payout flow, restarts both apps and checks idempotent recovery. It publishes no ports and deploys nothing to Railway. It removes only its labelled test containers, associated disposable volumes, network and generated local image; it never prunes existing resources. Docker may download the official node:24-bookworm-slim and postgres:16-alpine images when uncached. Allow roughly 1 GB free RAM and 1 GB additional disk headroom, depending on cached layers. This is local image/private-network verification, not acceptance of Railway routing or a hosted HTTPS domain. Separate test:browser covers the HTTPS edge fixture. On Linux use the owner-approved Docker access mechanism; do not change socket permissions.
+
+## Completed registration evidence
+
+The read-only /verified page keeps the original 42 G39-A transaction identities unchanged and adds a separate G45 record from g40/public/registration-proof.json. Its original hash is 4jd1JJ7fshiLPht1DkErJ3NKBQGVx8R8oNBczUDww9oW. GET /api/registration-evidence exposes only sanitized public facts. GET /api/registration-status and npm run verify:proof independently check FINAL execution, exact signer/receiver/arguments/deposit/gas, original receipt identities, accepted code and product at a finalized block. An unavailable RPC returns 503; historical proof remains labelled historical. No new transaction, grant or wallet request is possible through these endpoints. Product registration does not independently establish IP ownership, copyright, legal title or creator identity.
+
+## Verification scope
+
+The Windows gate reports only checks actually run. PostgreSQL and container checks are optional explicit switches and print NOT_REQUESTED when omitted. A local candidate result is not a post-push public GitHub result. No command here pushes, deploys or signs. Final project licensing and the final hackathon README remain owner decisions; no license is silently assigned by these engineering changes.

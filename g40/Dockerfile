@@ -10,10 +10,6 @@ COPY g38/ ./g38/
 COPY g39/ ./g39/
 COPY g40/ ./g40/
 COPY g41/ ./g41/
-COPY g42/ ./g42/
-COPY g43/ ./g43/
-COPY g44/ ./g44/
-COPY g45/ ./g45/
 COPY BUILD_MANIFEST.json ./
 RUN chown -R node:node /app
 USER node

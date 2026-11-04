@@ -1,5 +1,6 @@
 // Allowlisted Railway artifact; never packages credentials, journals, node_modules or raw customer inputs.
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {spawnSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+import {validateContext} from './build-context.mjs';
 import {checkRelease} from '../g37/bridge/domain.mjs';
 checkRelease();
 const root=fileURLToPath(new URL('../',import.meta.url)),destination=path.join(root,'g40/build'),out=fs.existsSync(destination)?fs.mkdtempSync(path.join(root,'g40/.build-')):destination,files={},seen=new Set(),sha=b=>createHash('sha256').update(b).digest('hex');
@@ -18,5 +19,5 @@ copy('g41/live/profile.json');
 const proofBytes=fs.readFileSync(path.join(root,'g40/public/testnet-proof.json'));const proof=JSON.parse(proofBytes);assert.equal(proof.network,'testnet');assert.equal(proof.transactions.length,42);copy('g40/public/testnet-proof.json',proofBytes);
 for(const name of ['Dockerfile','railway.json','.dockerignore'])copy(name,fs.readFileSync(path.join(root,'g40',name)));
 const size=Object.keys(files).reduce((n,f)=>n+fs.statSync(path.join(out,f)).size,0);assert(!Object.keys(files).some(n=>/node_modules|\/data\/|\.env|credential|keychain|operations\/|runs\//i.test(n)),'PRIVATE_FILE_IN_BUILD');
-fs.writeFileSync(path.join(out,'BUILD_MANIFEST.json'),JSON.stringify({status:'LOCAL_RAILWAY_ARTIFACT_NOT_DEPLOYED',files,bytes:size},null,2));console.log(JSON.stringify({status:'G40_BUILD_PASS',files:Object.keys(files).length,bytes:size,path:out}));
+fs.writeFileSync(path.join(out,'BUILD_MANIFEST.json'),JSON.stringify({status:'LOCAL_RAILWAY_ARTIFACT_NOT_DEPLOYED',files,bytes:size},null,2));validateContext(out);console.log(JSON.stringify({status:'G40_BUILD_PASS',files:Object.keys(files).length,bytes:size,path:out}));
 if(out!==destination){assert(path.resolve(destination)===path.join(root,'g40/build')&&!fs.lstatSync(destination).isSymbolicLink(),'UNSAFE_BUILD_TARGET');const archive=path.join(root,'g40/evidence/build-prior-'+Date.now());assert(archive.startsWith(path.join(root,'g40/evidence')));fs.mkdirSync(path.dirname(archive),{recursive:true});fs.renameSync(destination,archive);fs.renameSync(out,destination);}

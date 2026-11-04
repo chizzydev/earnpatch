@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "network": "testnet",
+  "kind": "PRODUCT_RECORD_REGISTRATION",
+  "independently_verified_at": "2026-11-04T12:43:22.429Z",
+  "final_execution_status": "FINAL",
+  "hash": "4jd1JJ7fshiLPht1DkErJ3NKBQGVx8R8oNBczUDww9oW",
+  "signer": "bc5877315199a3a08190d2fe72e30908faa33874e9c8517a8db75fa27c9aeb4e",
+  "receiver": "ep-g39-source-20261101.testnet",
+  "method": "create_product",
+  "args": {
+    "product_id": "g45_live_demo_20261103",
+    "name": "EarnPatch Live Demo"
+  },
+  "args_utf8": "{\"product_id\":\"g45_live_demo_20261103\",\"name\":\"EarnPatch Live Demo\"}",
+  "deposit": "40960000000000000000000",
+  "gas": "100000000000000",
+  "code_hash": "DVzLWoUDQdaZVZzqnP5k3iqH5smk2PMpvzoNUt9d3iBp",
+  "transaction_block_hash": "4LCAXeu4P96h5EWewZeAc6YCZn8dmA87qEY4TcXrA4Fx",
+  "receipts": [
+    {
+      "id": "EyXPu7G2VhPBWY9yaEbupHxrFhE2jTnTgUkUXM8XnqB1",
+      "executor": "ep-g39-source-20261101.testnet",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "JCNwYfte1XVx33EYw7PXTEnpaabike1F6H7Re3LP5Y6u",
+      "executor": "bc5877315199a3a08190d2fe72e30908faa33874e9c8517a8db75fa27c9aeb4e",
+      "status": "SUCCESS"
+    }
+  ],
+  "product_observation": {
+    "block_height": 276196195,
+    "block_hash": "6gBcBuTdiqXiM4HZw2PrPCNA1jLYXi3McBCYAhxjsvYj",
+    "owner": "bc5877315199a3a08190d2fe72e30908faa33874e9c8517a8db75fa27c9aeb4e",
+    "name": "EarnPatch Live Demo",
+    "storage_available": "38220000000000000000000",
+    "storage_funded": "40960000000000000000000",
+    "use_storage_escrow": "0"
+  },
+  "scope": "An account registered a product record on NEAR. This does not independently establish legal title, copyright, intellectual-property ownership or creator identity."
+}
