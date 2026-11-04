@@ -141,6 +141,9 @@
     "scripts/contracts.sh": "fba98cf4920d9eedb9df2eeda6548ddc4877ae30e7e5151f3079b5ae8624271f",
     "scripts/local-browser.mjs": "d5e6b110f14e067e791ea0b2f9f320fa05c6715933da53aad1227cd1d54246c2",
     "scripts/local.mjs": "5452916840dc5e162ee279f7576b16bc141a455a50154e10187cbc1c75d89e03",
-    "scripts/verify-release.mjs": "ad3e124ab67ef65b24f9b80b1f97354faf55dc0952e368da09a6d4896cf586c2"
+    "scripts/verify-release.mjs": "ad3e124ab67ef65b24f9b80b1f97354faf55dc0952e368da09a6d4896cf586c2",
+    "README.md": "2db8db2eea48c1540a1f518012a2b6ad713b013d18cd206e3eefb59b1248f3a0",
+    "docs/images/earnpatch-overview.png": "9c1a2c158f7de2e252174ce7f6998f64d77bb5d0cd80ab22033daf4c2ad105d0",
+    "docs/images/earnpatch-onchain-proof.png": "3616e34b71dd0543f0fdfbc48ca6b6c5080bafcb1eaeb6db5395170fb42e6229"
   }
 }
