@@ -10,7 +10,13 @@ The working prototype includes a marketplace, a commissioning and delivery works
 
 ![EarnPatch marketplace and integrated software-upgrade experience](docs/images/earnpatch-overview.png)
 
-**Start here:** [Run EarnPatch](#run-it) · [Walk through a complete sale](#follow-a-feature-from-commission-to-customer) · [Check the money](#the-money-in-one-example) · [Verify the NEAR transactions](#verify-the-near-testnet-records) · [Run the tests](#reproduce-the-checks)
+**[Open EarnPatch — live product](https://earnpatch-production.up.railway.app/)**
+
+The link opens EarnPatch's **main homepage**, not the walkthrough. The optional **Start here** guide is available in the site's navigation. Explore the merchant, developer and customer experience directly; for the connected Paperlane journey, complete the release and token-agreement steps in Finance and choose **Open token-checkout Paperlane**. Opening Paperlane separately does not attach that same approved workspace.
+
+**Live evaluation:** Purchases, development commitments and payouts use simulated balances. SafeShare produces genuinely transformed CSV files. Original NEAR Testnet receipts and the G45 registration remain separate, authentic **read-only** evidence; the public app does not request wallet signatures.
+
+**Explore the repository:** [Run locally](#run-it) · [Walk through a complete sale](#follow-a-feature-from-commission-to-customer) · [Check the money](#the-money-in-one-example) · [Verify the NEAR transactions](#verify-the-near-testnet-records) · [Run the tests](#reproduce-the-checks)
 
 ## The important part in 30 seconds
 
@@ -265,4 +271,4 @@ The prototype has no claimed customer traction or measured commercial impact yet
 
 ---
 
-Built for the [NEAR Hackathon 2026](https://nearhackathon.com/). The public repository contains the buildable evaluator experience and checkable Testnet history; the Nightly signing tools used for the original registration are excluded from this release. [Start the app](#run-it) or [inspect the transactions](#verify-the-near-testnet-records).
+Built for the [NEAR Hackathon 2026](https://nearhackathon.com/). The public repository contains the buildable evaluator experience and checkable Testnet history; the Nightly signing tools used for the original registration are excluded from this release. [Explore EarnPatch live](https://earnpatch-production.up.railway.app/), [run it locally](#run-it), or [inspect the transactions](#verify-the-near-testnet-records).
