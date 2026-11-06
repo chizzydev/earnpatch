@@ -16,7 +16,7 @@
     "scripts/postgres.mjs": "04738d9bd4576acb1eb53f8a083c18911a8d3db0cf1a889a0e5f79d49ff49350",
     ".gitattributes": "a0666b2a9b73bc0ff620463c8c2a90b9acb7ba6dccdece505ff5567717684491",
     ".gitignore": "be35b29f12dbc5af7af8fa4b62ad1359264e51b4bdc4578f2e0b35249c651957",
-    "OPERATIONS.md": "87db9698b493a5686ca18e6fe449f337f1d2cf393057b339497675bcea39a045",
+    "OPERATIONS.md": "ae6972885d2b444ff14d33de776d62ad6ac57e9f292f4f6c82b92fd762f414a2",
     "accepted/G27_SOURCE_SHA256.json": "ab7569b8257f6e8341a65a1471a6dede71cccd86592cf4047abe64557cd0b69b",
     "apps/earnpatch/backend/chain.mjs": "38df9fc12fe9d36a132fffc1a047d5482f609a7dfaee5a148ec0083ad67b8f1d",
     "apps/earnpatch/backend/security.mjs": "c0c6f5be92d1423bbe8710f7de3a44551e3e56bd3a7111df0b07c111e144a206",
