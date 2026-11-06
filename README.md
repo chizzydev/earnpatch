@@ -71,6 +71,8 @@ The build should report `G40_BUILD_PASS`. The launcher starts two services on yo
 
 On Windows, the same four application surfaces are available at these addresses. Stop the launcher with **Ctrl+C**. If the default ports are occupied, set `EARNPATCH_LOCAL_PORT` and `PAPERLANE_LOCAL_PORT` before starting; [OPERATIONS.md](OPERATIONS.md) has the details.
 
+**Why the port numbers sometimes differ:** `4580` (EarnPatch) and `4581` (Paperlane) are the defaults for a fresh local `npm start`. An isolated review or recording session may choose different free ports without changing the product or its published defaults. For example, in PowerShell, set `$env:EARNPATCH_LOCAL_PORT='4590'` and `$env:PAPERLANE_LOCAL_PORT='4591'` before `npm start`, then use those two localhost ports instead. The public Railway URLs do not use these local overrides.
+
 ## Follow a feature from commission to customer
 
 Use a fresh browser session. The fictional merchant, developer, customer and reporting data are included. There is no need to create accounts or connect a wallet.
@@ -268,6 +270,12 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\WINDOWS_VERIFY
 ### What a real pilot should measure
 
 The prototype has no claimed customer traction or measured commercial impact yet. A pilot with a merchant and developer should track **time from commission to accepted delivery**, **paid use of the released feature**, **developer earnings against the agreed cap**, and **whether development commitments are released or refunded correctly**. The question is whether tying developer earnings to accepted, used software leads to better outcomes than treating the job and the subsequent sales as unrelated.
+
+## Licensing and ownership
+
+Copyright (c) 2026 ChizzyDev. All rights reserved.
+
+This public repository is available for review of the EarnPatch prototype, including hackathon judging. **No open-source license has been granted** for the project code. Public visibility does not generally authorize copying, modifying, redistributing or commercially reusing the code. Contact the project owner for licensing permission. Third-party components remain subject to their own licenses.
 
 ---
 
