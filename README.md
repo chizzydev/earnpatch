@@ -258,7 +258,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\WINDOWS_VERIFY
 
 `-Postgres` and `-Container` are optional. Without them, those checks show `NOT_REQUESTED`; the Windows command does not silently run them. The candidate's separate PostgreSQL **16.15** and actual Docker three-service runs were recorded during requalification. Those tests do **not** establish that the app is already hosted on Railway.
 
-[OPERATIONS.md](OPERATIONS.md) covers alternate ports, PostgreSQL dependencies, production deployment variables and failure recovery. The repository includes deployment configuration, but no live hosted domain is claimed here.
+[OPERATIONS.md](OPERATIONS.md) covers alternate ports, PostgreSQL dependencies, production deployment variables and failure recovery. The repository includes deployment configuration and a publicly accessible Railway deployment. EarnPatch is available at [https://earnpatch-production.up.railway.app/](https://earnpatch-production.up.railway.app/), with Paperlane operating as a separate connected service.
+
+A production PostgreSQL logical backup and isolated restore were successfully verified on November 6, 2026. Native Railway volume restoration remains untested, and automatic backups are not currently enabled. See [OPERATIONS.md](OPERATIONS.md) for the recovery evidence and operational details.
 
 ## What is implemented—and what isn't
 
