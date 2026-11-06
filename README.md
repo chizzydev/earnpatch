@@ -83,7 +83,7 @@ Use a fresh browser session. The fictional merchant, developer, customer and rep
 | **2. Accept and deliver** | Switch to **Developer**, accept the agreement, and submit the bundled SafeShare release. | Studio records the accepted terms and identifies the release by its artifact hash. It does **not** execute arbitrary uploaded code. |
 | **3. Approve** | Switch to **Merchant**, inspect the release and acceptance criteria, check the review confirmation, and approve. | Customer access becomes available. Developer acceptance and merchant approval are different actions. |
 | **4. Buy a use** | Open the [Customer](http://127.0.0.1:4580/#customer) view and buy a simulated native-price SafeShare use. | One export credit appears; merchant and developer balances reflect the agreed split. |
-| **5. Use the feature** | Open SafeShare Export, paste the CSV below, preview, select columns **1,2** to redact, confirm the policy, process and download. | The resulting CSV is genuinely transformed. The downloaded file is the useful result of the purchase. |
+| **5. Use the feature** | Open SafeShare Export, paste the CSV below, preview, select **email** and **account_id** (zero-based columns **1 and 2**) to redact, confirm the policy, process and download. | The resulting CSV is genuinely transformed. The downloaded file is the useful result of the purchase. |
 | **6. Connect Paperlane** | In [Finance](http://127.0.0.1:4580/finance), import the approved release as **Merchant**; accept Paperlane's separate TestEPUSD terms as **Developer**. Select **Open token-checkout Paperlane**. | The approved SafeShare feature and its token agreement are handed to the independent Paperlane app. |
 | **7. Buy through Paperlane** | In Paperlane, purchase a simulated token-priced use, supply CSV input, review the redaction policy, process and download. Return to Finance. | Paperlane supplies a real download while Finance shows the separate token accounting. A native credit cannot be spent as a token credit. |
 | **8. Check the chain evidence** | Visit [Verified on NEAR](http://127.0.0.1:4580/verified) and open the original transaction links. | You can distinguish historical on-chain settlement from the evaluation you just completed. |
@@ -98,7 +98,7 @@ Ada,ada@example.test,customer_104,"=SUM(1,2)",42
 
 **Check the download:** columns `email` and `account_id` are redacted; `李雷` remains readable; the `=SUM(1,2)` entry is neutralized for spreadsheet use; and the original email addresses no longer appear. The processor supports selected columns and pattern checks, but it cannot promise to find every sensitive value. Inspect the export before sharing it.
 
-**Want to write your own commission instead?** In Studio, switch to Merchant and choose **Reset this workspace**, then create a new brief. Reset starts a different *local* evaluation scenario; it does not change the NEAR Testnet records. The built-in [start guide](http://127.0.0.1:4580/start) explains the difference between the existing invitation and a new draft.
+**Want to write your own commission instead?** In Studio, switch to Merchant and choose **Reset this workspace**, then create a new brief. Reset starts a different evaluation scenario in your current local or hosted session; it does not change the NEAR Testnet records. The built-in [start guide](http://127.0.0.1:4580/start) explains the difference between the existing invitation and a new draft.
 
 ## The money in one example
 
@@ -158,13 +158,13 @@ The source record is [`g40/public/registration-proof.json`](g40/public/registrat
 npm run verify:proof
 ```
 
-**Expected:** with access to NEAR Testnet RPC, the command exits `0` and reports `"final_execution_status": "FINAL"` for the recorded transaction. It does not request a wallet signature. If the RPC cannot be reached or the returned evidence does not match, verification fails rather than reporting success.
+**Expected:** with access to NEAR Testnet RPC, the command exits `0` and reports `"final_execution_status": "FINAL"` for the recorded transaction. It does not request a wallet signature. If the RPC cannot be reached or the returned evidence does not match, verification fails rather than reporting success. If a block explorer rejects an automated request, use this RPC-based command or the application's read-only verification; explorer availability alone does not establish transaction finality.
 
 **What this proves:** the account registered a product record in the named contract. **It does not establish copyright, legal ownership, creator identity, or that every local evaluation payment happened on-chain.**
 
 ### Historical funding, purchases and payouts
 
-The separate [`g40/public/testnet-proof.json`](g40/public/testnet-proof.json) lists **42 finalized transaction identities**. They cover contract deployment, development commitments, delivery, purchases, refunds, expected rejections and withdrawals. **Forty-two identities do not mean forty-two successful purchases.** Each record retains its actual outcome.
+The separate [`g40/public/testnet-proof.json`](g40/public/testnet-proof.json) lists **42 finalized transaction identities**. They cover contract deployment, development commitments, delivery, purchases, refunds, expected rejections and withdrawals. **Forty-two identities do not mean forty-two successful purchases.** Each record retains its actual outcome. An earlier wrong-price attempt remains **UNKNOWN** and is explicitly outside these 42 finalized identities; the separately finalized additional attempt does not resolve that original uncertainty.
 
 A separate native lifecycle contains a real **0.01 testNEAR** purchase with **0.008 testNEAR** allocated to the merchant and **0.002 testNEAR** paid to the developer. In the token campaign, three **TestEPUSD** purchases totaled **0.021**, with **0.003** in developer royalties and **0.018** in merchant proceeds; both accounts' withdrawal transactions have their own hashes.
 
@@ -216,8 +216,8 @@ The accounting rules also enforce boundaries that a UI cannot override:
 | [`g36/site`](g36/site) | Marketplace and three-role customer experience |
 | [`g37/studio`](g37/studio), [`g37/bridge`](g37/bridge) | Commissioning, delivery, merchant approval and Bridge integration |
 | [`g37/paperlane`](g37/paperlane) | Independent SaaS and its SafeShare export flow |
-| [`g38`](g38), [`g39`](g39) | Financial rules, contracts, persistence and original settlement evidence |
-| [`g40`](g40), [`scripts`](scripts) | Local server, deployment packaging, database tests and read-only verification |
+| [`g38`](g38), [`g39`](g39) | Financial rules, contracts and persistence |
+| [`g40`](g40), [`scripts`](scripts) | Local server, deployment packaging, database tests, public transaction records and read-only verification |
 | [`g41`](g41) | Evaluation state and cross-application test coverage |
 | [`marketplace_v2`](marketplace_v2), [`g38/contracts`](g38/contracts), [`g38/test-token`](g38/test-token) | Rust NEAR contract source and test-token implementation |
 
@@ -227,7 +227,7 @@ The numbered directories reflect engineering stages; they are **not** separate a
 
 ## Reproduce the checks
 
-The fastest full local check is:
+For the build, automated application tests and source-integrity checks, run:
 
 ```bash
 npm ci
@@ -235,7 +235,7 @@ npm test
 npm run verify
 ```
 
-`npm test` runs the build first. The frozen engineering candidate at commit **`d977678`** passed **50/50 tests** in a fresh clone. That result applies to that candidate; it is **not** a claim about a future GitHub commit after README integration.
+`npm test` runs the build first. The accepted application passed **50/50 tests** during fresh-clone qualification and again on **November 6, 2026**. The subsequent documentation updates do not change the application source. Browser, HTTPS, PostgreSQL, Docker and live read-only proof checks are separate commands below; they are not implied by the unit-test count.
 
 | Command | Checks | Extra requirement |
 | --- | --- | --- |
@@ -243,7 +243,8 @@ npm run verify
 | `npm test` | Role transitions, payments and caps, duplicate handling, registration verification and release safeguards | No wallet |
 | `npm run verify` | Source/WASM SHA-256, approved public-file list and basic credential patterns | Git checkout |
 | `npm run verify:package` | Every required input for the generated Docker context | Run build first |
-| `npm run test:browser` | Edge role flows, real CSV downloads, UI transitions and recovery | Microsoft Edge / supported browser configuration |
+| `npm run test:browser` | HTTPS evidence-page and Paperlane browser checks, real CSV download and mobile overflow | Installed Microsoft Edge and OpenSSL |
+| `npm run test:evaluation` | Connected merchant/developer/customer UI journeys, native and Paperlane CSV downloads, reload recovery | Installed Microsoft Edge |
 | `npm run test:https` | HTTPS and actual file downloads | OpenSSL |
 | `npm run test:wasm` | Accepted WASMs through the shipped host checks | No new Rust compilation |
 | `npm run verify:proof` | The exact G45 registration and current finalized product state | Public NEAR Testnet RPC |
@@ -256,7 +257,7 @@ npm run verify
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\WINDOWS_VERIFY.ps1 -Browser -ReadOnlyProof
 ```
 
-`-Postgres` and `-Container` are optional. Without them, those checks show `NOT_REQUESTED`; the Windows command does not silently run them. The candidate's separate PostgreSQL **16.15** and actual Docker three-service runs were recorded during requalification. Those tests do **not** establish that the app is already hosted on Railway.
+`-Postgres` and `-Container` are optional. Without them, those checks show `NOT_REQUESTED`; the Windows command does not silently run them. The separate PostgreSQL **16.15** and actual Docker three-service runs passed during release qualification. Hosted Railway acceptance was verified separately on **November 6, 2026**; local test results alone do not establish hosted availability.
 
 [OPERATIONS.md](OPERATIONS.md) covers alternate ports, PostgreSQL dependencies, production deployment variables and failure recovery. The repository includes deployment configuration and a publicly accessible Railway deployment. EarnPatch is available at [https://earnpatch-production.up.railway.app/](https://earnpatch-production.up.railway.app/), with Paperlane operating as a separate connected service.
 
@@ -264,10 +265,10 @@ A production PostgreSQL logical backup and isolated restore were successfully ve
 
 ## What is implemented—and what isn't
 
-- **Working locally:** merchant/developer/customer workflows, separate conditional funding, capped simulated royalties, real SafeShare CSV transformation, Paperlane integration, restart recovery and read-only blockchain verification.
+- **Working in local and hosted wallet-free evaluation:** merchant/developer/customer workflows, separate conditional funding, capped simulated royalties, real SafeShare CSV transformation, Paperlane integration, restart recovery and read-only blockchain verification.
 - **Recorded on NEAR Testnet:** actual contract transactions, escrow and purchase results, royalty withdrawals, and the separately approved product registration.
 - **Not part of this public build:** private owner-wallet authorization, a new financial-signing flow, live customer money, mainnet settlement, production billing, and a hosted deployment guarantee.
-- **Data handling:** CSV input is processed for the requested export, not saved as reusable raw customer uploads. Digests and other operation metadata may be retained. Pattern redaction is not a promise of complete anonymization.
+- **Data handling:** CSV input is processed for the requested export, not saved as reusable raw customer uploads. Digests and other operation metadata may be retained. Evaluation sessions and their workspace state expire after **24 hours**. Pattern redaction is not a promise of complete anonymization.
 
 ### What a real pilot should measure
 

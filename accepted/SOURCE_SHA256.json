@@ -142,7 +142,7 @@
     "scripts/local-browser.mjs": "d5e6b110f14e067e791ea0b2f9f320fa05c6715933da53aad1227cd1d54246c2",
     "scripts/local.mjs": "5452916840dc5e162ee279f7576b16bc141a455a50154e10187cbc1c75d89e03",
     "scripts/verify-release.mjs": "ad3e124ab67ef65b24f9b80b1f97354faf55dc0952e368da09a6d4896cf586c2",
-    "README.md": "42655fe49cd5a961e8914ce6dbf1fbbd7326f59b6d87bbd24bde367b028ce083",
+    "README.md": "16e43b7299c2196ca78ae118ef19e71d70d5918d02ab5add949703b295ccde3e",
     "docs/images/earnpatch-overview.png": "9c1a2c158f7de2e252174ce7f6998f64d77bb5d0cd80ab22033daf4c2ad105d0",
     "docs/images/earnpatch-onchain-proof.png": "3616e34b71dd0543f0fdfbc48ca6b6c5080bafcb1eaeb6db5395170fb42e6229"
   }
