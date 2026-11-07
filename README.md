@@ -225,6 +225,12 @@ The numbered directories reflect engineering stages; they are **not** separate a
 
 **Stack:** Node.js/ES modules, browser JavaScript/CSS, PostgreSQL for the hosted configuration, Rust/near-sdk smart contracts, and NEAR Testnet for the recorded chain executions. Paperlane and EarnPatch use distinct service entry points.
 
+### Third-party dependencies
+
+The implementation uses [Node.js](https://nodejs.org/) and [node-postgres (`pg` 8.16.3)](https://github.com/brianc/node-postgres) for the application and database adapter. Contract source uses [NEAR SDK 5.29.1](https://github.com/near/near-sdk-rs) and `near-contract-standards` 5.29.1 for the test token. [Playwright 1.61.1](https://github.com/microsoft/playwright) is used only for automated browser verification. PostgreSQL and the official Node/PostgreSQL container images support the optional deployment and database checks. The dependency manifests and lockfiles record the exact package versions; third-party components retain their own licenses.
+
+The SafeShare engine and bundled release are included under [`apps/earnpatch`](apps/earnpatch); the public demonstration does not depend on a private CSV-processing service or execute arbitrary uploaded code.
+
 ## Reproduce the checks
 
 For the build, automated application tests and source-integrity checks, run:
@@ -278,7 +284,7 @@ The prototype has no claimed customer traction or measured commercial impact yet
 
 Copyright (c) 2026 ChizzyDev. All rights reserved.
 
-This public repository is available for review of the EarnPatch prototype, including hackathon judging. **No open-source license has been granted** for the project code. Public visibility does not generally authorize copying, modifying, redistributing or commercially reusing the code. Contact the project owner for licensing permission. Third-party components remain subject to their own licenses.
+This public repository is available for review of the EarnPatch prototype, including hackathon judging. **No open-source license has been granted** for the project code. Public visibility does not generally authorize copying, modifying, redistributing or commercially reusing the code. Contact the project owner for licensing permission. Third-party components remain subject to their own licenses. See [LICENSE](LICENSE) for the same owner-approved policy.
 
 ---
 

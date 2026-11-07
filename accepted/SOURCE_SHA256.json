@@ -16,7 +16,7 @@
     "scripts/postgres.mjs": "04738d9bd4576acb1eb53f8a083c18911a8d3db0cf1a889a0e5f79d49ff49350",
     ".gitattributes": "a0666b2a9b73bc0ff620463c8c2a90b9acb7ba6dccdece505ff5567717684491",
     ".gitignore": "be35b29f12dbc5af7af8fa4b62ad1359264e51b4bdc4578f2e0b35249c651957",
-    "OPERATIONS.md": "ae6972885d2b444ff14d33de776d62ad6ac57e9f292f4f6c82b92fd762f414a2",
+    "OPERATIONS.md": "52b9b80185d76146293e02a0071a858a452b3635f1c70cefef3911a27255003b",
     "accepted/G27_SOURCE_SHA256.json": "ab7569b8257f6e8341a65a1471a6dede71cccd86592cf4047abe64557cd0b69b",
     "apps/earnpatch/backend/chain.mjs": "38df9fc12fe9d36a132fffc1a047d5482f609a7dfaee5a148ec0083ad67b8f1d",
     "apps/earnpatch/backend/security.mjs": "c0c6f5be92d1423bbe8710f7de3a44551e3e56bd3a7111df0b07c111e144a206",
@@ -142,7 +142,8 @@
     "scripts/local-browser.mjs": "d5e6b110f14e067e791ea0b2f9f320fa05c6715933da53aad1227cd1d54246c2",
     "scripts/local.mjs": "5452916840dc5e162ee279f7576b16bc141a455a50154e10187cbc1c75d89e03",
     "scripts/verify-release.mjs": "ad3e124ab67ef65b24f9b80b1f97354faf55dc0952e368da09a6d4896cf586c2",
-    "README.md": "16e43b7299c2196ca78ae118ef19e71d70d5918d02ab5add949703b295ccde3e",
+    "LICENSE": "05607401f6662d95031ab7f53f9bcda2111f28f32a9708f01770de197e9b36b4",
+    "README.md": "5926c63588235df3ffb79fea6ebd27a22879030ab4cded7dfc577764cd2176ac",
     "docs/images/earnpatch-overview.png": "9c1a2c158f7de2e252174ce7f6998f64d77bb5d0cd80ab22033daf4c2ad105d0",
     "docs/images/earnpatch-onchain-proof.png": "3616e34b71dd0543f0fdfbc48ca6b6c5080bafcb1eaeb6db5395170fb42e6229"
   }
