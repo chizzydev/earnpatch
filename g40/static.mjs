@@ -23,7 +23,7 @@ export function staticRoutes(config,{live=proofReader(),registration=registratio
   if(p==='/verified')return file(roots.public,'proof.html');
   if(p==='/g40-proof.mjs')return file(roots.public,'proof.mjs');
   if(p==='/studio')return file(roots.studio,'index.html',s=>s.replace('src="/app.mjs"','src="/studio-app.mjs"'));
-  if(p==='/studio-app.mjs')return file(roots.studio,'app.mjs');if(p==='/bridge.css')return file(roots.studio,'bridge.css');
+  if(p==='/studio-app.mjs')return file(roots.studio,'app.mjs');if(p==='/studio-acceptance.mjs')return file(roots.studio,'acceptance.mjs');if(p==='/bridge.css')return file(roots.studio,'bridge.css');
   if(p==='/finance')return file(roots.finance,'index.html');if(['/finance.mjs','/finance.css','/perspective.mjs'].includes(p))return file(roots.finance,p.slice(1));
   if(p==='/proof')return file(roots.market,'g35-proof.json');
   if(p.startsWith('/assets/'))return file(roots.market,p.slice(8));

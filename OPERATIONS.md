@@ -23,15 +23,28 @@ npm test
 npm run test:https
 npm run test:browser
 npm run test:evaluation
+npm run test:acceptance
 npm run test:wasm
 npm run verify
 ~~~
 
-The HTTPS fixture needs OpenSSL. Windows defaults to Git for Windows' OpenSSL; override G40_OPENSSL with an installed executable path if necessary. Browser tests use the locked Playwright package and installed Microsoft Edge. These checked-in browser gates currently require Microsoft Edge (channel msedge), including on other operating systems. No browser is silently downloaded. Local application startup does not require browser automation. The tests use isolated sessions/ports and never approve wallets. The HTTPS browser gate checks the evidence page and Paperlane download; test:evaluation covers the connected role journeys. On Windows, scripts/WINDOWS_VERIFY.ps1 -Browser runs both browser gates, along with the standard build, application, packaging, HTTPS, WASM and integrity checks.
+The HTTPS fixture needs OpenSSL. Windows defaults to Git for Windows' OpenSSL; override G40_OPENSSL with an installed executable path if necessary. Browser tests use the locked Playwright package and installed Microsoft Edge. These checked-in browser gates currently require Microsoft Edge (channel msedge), including on other operating systems. No browser is silently downloaded. Local application startup does not require browser automation. The tests use isolated sessions/ports and never approve wallets. The HTTPS browser gate checks the evidence page and Paperlane download; test:evaluation covers the connected role journeys. On Windows, scripts/WINDOWS_VERIFY.ps1 -Browser runs all three browser gates, along with the standard build, application, packaging, HTTPS, WASM and integrity checks.
 
 Rust sources are marketplace_v2 (native marketplace), g38/contracts (commitment escrow and token settlement), and g38/test-token (test-only NEP-141 token, no redemption value). scripts/contracts.sh tests and compiles to ignored target directories, never replacing the accepted WASMs. Rust/wasm32 and the pinned near-sdk 5.29.1 dependencies must be available. G38 Cargo locks are preserved. The native marketplace dependency lock is included. Recompilation with another compiler/dependency resolution is not a claim of byte-identical WASM. Accepted binaries and every financial source fingerprint are verified by npm run verify. The Node.js verification commands above do not compile Rust; run scripts/contracts.sh separately when the required Rust toolchain and dependencies are available.
 
 Portable real-PostgreSQL verification is `npm run test:postgres`. It requires PostgreSQL 16+ binaries (initdb, postgres, pg_ctl, createdb), Node and OpenSSL. Set PG_BINDIR if pg_config is not on PATH; optionally set PG_SHAREDIR and PG_LIBDIR for an unpacked distribution. Run as a normal user on Linux. Unset DATABASE_URL and G40_TEST_DATABASE_URL for this child process: the runner refuses existing database URLs, initializes a unique loopback-only disposable cluster/database, runs the actual HTTPS/service/CSV/cap/restart tests, checks JSONB exact-string persistence, stops its cluster and removes only its own temporary directory. Existing application databases are never used. The local fixture uses trust authentication solely for its disposable loopback cluster. Outputs go to ignored g40/evidence/POSTGRES_VERIFICATION.json and logs. Missing prerequisites fail; they are not treated as passing.
+
+## Optional merchant acceptance sandbox
+
+After submission, Merchant can choose **Test submitted release** in Studio. The panel invokes the same approved `apps/earnpatch/public/csv.mjs` transformation used for customer exports, after `checkRelease()` verifies the pinned implementation and manifest. It does not execute uploaded code or change the accepted artifact.
+
+The session cookie and same-origin checks apply before the review routes. The backend requires the server-side Merchant evaluation persona, the current workspace's Submitted feature and the exact SafeShare artifact. Client-provided account, role or scope selectors are not accepted. An opaque review identifier is bound to that workspace, feature, artifact and accepted terms; another workspace cannot reuse it. The public evaluator deliberately permits persona switching within a visitor's own workspace; this boundary is not a real-world merchant identity or wallet authentication system.
+
+Review input is limited to 20 KB and 100 data rows, with 20 processing runs per delivery. Quota survives reload and restart; reopening or renewing an expired 30-minute review identifier does not reset that delivery's quota. Formula mitigation always applies. Optional sensitive-header/pattern redaction retains the engine's existing behavior. Invalid CSV or policy data is rejected. The review routes never purchase, consume a credit, mint an entitlement, release a grant, allocate royalties or approve publication. They are not exposed through the customer or private Bridge processing routes.
+
+No raw review CSV, transformed output or input digest is persisted. Only opaque review metadata and the processing count are stored. Preview output is displayed in the panel without a download action; changing persona or leaving the page clears browser-held input/output. Returning from the panel preserves the merchant's existing approval controls. Testing is optional, and explicit approval confirmation remains required. The prior recorded demo is preserved and does not show this later feature.
+
+Run `npm run test:acceptance` for an isolated Edge UI test, including actual CSV processing/downloads and the subsequent simulated commercial workflow. No wallet or real cryptocurrency is used. The existing deployment uses the same three services and PostgreSQL schema; this improvement needs no new infrastructure or blockchain transaction.
 
 ## Railway only
 

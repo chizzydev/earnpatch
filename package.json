@@ -17,6 +17,7 @@
     "test:wasm": "node scripts/G27_WASM_HOST_CHECK.mjs g28/artifacts/earnpatch_marketplace_v2.wasm && node g38/wasm-host.mjs commitments && node g38/wasm-host.mjs token-market && node g38/wasm-host.mjs test-token",
     "test:local-browser": "node scripts/local-browser.mjs",
     "test:evaluation": "node g41/tests/browser.mjs",
+    "test:acceptance": "node g41/tests/acceptance-browser.mjs",
     "test:postgres": "node scripts/postgres.mjs",
     "test:container": "node scripts/container.mjs",
     "verify:package": "node scripts/check-package.mjs",

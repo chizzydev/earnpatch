@@ -81,12 +81,15 @@ Use a fresh browser session. The fictional merchant, developer, customer and rep
 | --- | --- | --- |
 | **1. Open the commission** | Visit [Studio](http://127.0.0.1:4580/studio). A new workspace has an open SafeShare invitation. | You can inspect the requirements and commercial terms before accepting them. |
 | **2. Accept and deliver** | Switch to **Developer**, accept the agreement, and submit the bundled SafeShare release. | Studio records the accepted terms and identifies the release by its artifact hash. It does **not** execute arbitrary uploaded code. |
+| **Optional merchant test** | While the delivery is Submitted, switch to Merchant and choose **Test submitted release**. Load the fictional sample or paste CSV, preview it, select redactions and run the acceptance test. | Inspect the actual transformed CSV and exact submitted artifact before returning to approval. No purchase, credit use, royalty or publication occurs. |
 | **3. Approve** | Switch to **Merchant**, inspect the release and acceptance criteria, check the review confirmation, and approve. | Customer access becomes available. Developer acceptance and merchant approval are different actions. |
 | **4. Buy a use** | Open the [Customer](http://127.0.0.1:4580/#customer) view and buy a simulated native-price SafeShare use. | One export credit appears; merchant and developer balances reflect the agreed split. |
 | **5. Use the feature** | Open SafeShare Export, paste the CSV below, preview, select **email** and **account_id** (zero-based columns **1 and 2**) to redact, confirm the policy, process and download. | The resulting CSV is genuinely transformed. The downloaded file is the useful result of the purchase. |
 | **6. Connect Paperlane** | In [Finance](http://127.0.0.1:4580/finance), import the approved release as **Merchant**; accept Paperlane's separate TestEPUSD terms as **Developer**. Select **Open token-checkout Paperlane**. | The approved SafeShare feature and its token agreement are handed to the independent Paperlane app. |
 | **7. Buy through Paperlane** | In Paperlane, purchase a simulated token-priced use, supply CSV input, review the redaction policy, process and download. Return to Finance. | Paperlane supplies a real download while Finance shows the separate token accounting. A native credit cannot be spent as a token credit. |
 | **8. Check the chain evidence** | Visit [Verified on NEAR](http://127.0.0.1:4580/verified) and open the original transaction links. | You can distinguish historical on-chain settlement from the evaluation you just completed. |
+
+**Optional acceptance sandbox:** This was added after the recorded demo; the existing video is unchanged and does not demonstrate it. It runs the same hash-pinned SafeShare engine as paid export processing and never executes uploaded developer code. Access is checked against the server-side Merchant evaluation persona, current workspace, Submitted stage and exact artifact. Evaluation role switching remains intentional; this is not wallet-based merchant authentication. Review requests are limited to 20 KB, 100 data rows and 20 processing runs per delivery. The panel has no export-download action. Source and transformed data are held only on the current page and cleared when you change roles or leave it; only the review binding, expiry and run count are retained server-side. Closing the panel returns to the existing approval controls without approving or publishing anything.
 
 **CSV for step 5** (fictional input):
 
@@ -241,7 +244,7 @@ npm test
 npm run verify
 ```
 
-`npm test` runs the build first. The accepted application passed **50/50 tests** during fresh-clone qualification and again on **November 6, 2026**. The subsequent documentation updates do not change the application source. Browser, HTTPS, PostgreSQL, Docker and live read-only proof checks are separate commands below; they are not implied by the unit-test count.
+`npm test` runs the build first. The accepted application passed **50/50 tests** during fresh-clone qualification and again on **November 6, 2026**. The merchant acceptance improvement adds eight focused API/security tests, bringing the application suite to **58 tests**. Browser acceptance is a separate gate. Browser, HTTPS, PostgreSQL, Docker and live read-only proof checks are separate commands below; they are not implied by the unit-test count.
 
 | Command | Checks | Extra requirement |
 | --- | --- | --- |
@@ -251,6 +254,7 @@ npm run verify
 | `npm run verify:package` | Every required input for the generated Docker context | Run build first |
 | `npm run test:browser` | HTTPS evidence-page and Paperlane browser checks, real CSV download and mobile overflow | Installed Microsoft Edge and OpenSSL |
 | `npm run test:evaluation` | Connected merchant/developer/customer UI journeys, native and Paperlane CSV downloads, reload recovery | Installed Microsoft Edge |
+| `npm run test:acceptance` | Submitted-release merchant sandbox, authorization feedback and the subsequent Customer/Finance/Paperlane workflow | Installed Microsoft Edge |
 | `npm run test:https` | HTTPS and actual file downloads | OpenSSL |
 | `npm run test:wasm` | Accepted WASMs through the shipped host checks | No new Rust compilation |
 | `npm run verify:proof` | The exact G45 registration and current finalized product state | Public NEAR Testnet RPC |
