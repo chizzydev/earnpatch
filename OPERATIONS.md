@@ -105,3 +105,9 @@ The read-only /verified page keeps the original 42 finalized G39-A transaction i
 ## Verification scope
 
 The Windows gate reports only checks actually run. PostgreSQL and container checks are optional explicit switches and print NOT_REQUESTED when omitted. It retains a conservative PUBLIC_SHIP reminder: running local checks alone does not verify a newly published GitHub commit. The public release was separately qualified from a fresh clone; documentation-only updates preserve the accepted application source. These verification commands do not push code, create Railway resources or sign transactions. The current owner-approved rights policy is in [LICENSE](LICENSE) and [README.md](README.md#licensing-and-ownership).
+
+## Workspace recovery and handoffs
+
+`npm run test:journey` runs isolated Edge failure/recovery checks on Marketplace, Studio, Finance and Paperlane. State retries never replay commercial actions. Role handoffs select an evaluation perspective only; acceptance, submission and approval remain separate explicit actions. New browser clients send the workspace they last observed with commercial changes, context switches and resets; a different active workspace rejects the request before mutation. The existing session and role checks remain authoritative. Older clients retain their existing API compatibility.
+
+Paperlane labels direct entry separately from an EarnPatch handoff. The Finance handoff opens a new linked Paperlane tab; it does not reconnect an existing tab. Native-price and token credits are separately displayed, customer-scoped, and do not substitute for each other. The public service remains wallet-free and cannot sign financial transactions.

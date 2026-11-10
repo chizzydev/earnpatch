@@ -3,3 +3,5 @@
 .workflow-next p,.workflow-next li,.workflow-next a{color:#173044!important}
 
 .live-card p{overflow-wrap:anywhere}.live-card .actions{flex-wrap:wrap}
+
+.workspace-recovery,.workspace-context,.credit-context,.journey-handoff{box-sizing:border-box;max-width:1200px;margin:20px auto;padding:18px 22px;border:1px solid #d4dfdf;border-radius:12px;background:#f3f7f5;color:#173044}.workspace-recovery p,.workspace-context p,.credit-context p{color:#173044}.workspace-recovery button{margin:6px 0}.credit-context .credit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.credit-grid>div{border:1px solid #d4dfdf;border-radius:8px;padding:14px;background:white}.credit-grid strong{display:block}.credit-count{font-size:26px}.journey-handoff .actions{display:flex;flex-wrap:wrap;gap:12px}.workspace-code{font:12px ui-monospace,monospace}.credit-context [data-token-credit-count],.credit-context [data-native-credit-count]{font-weight:700}@media(max-width:700px){.credit-context .credit-grid{grid-template-columns:1fr}.workspace-recovery,.workspace-context,.credit-context,.journey-handoff{margin:12px;padding:16px}}

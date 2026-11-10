@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {randomUUID} from 'node:crypto';
+import {fixture} from './fixture.mjs';
+
+test('workspace labels agree across surfaces; persona and repeated reads change no commercial records',async()=>{
+ const f=await fixture();try{const first=await f.ok('bridge','/product/api/state'),studio=await f.ok('bridge','/studio/api/state'),finance=await f.ok('bridge','/finance/api/state');assert.deepEqual(first.workspace,studio.workspace);assert.deepEqual(first.workspace,finance.workspace);
+ for(const persona of ['developer','merchant','customer']){const role=await f.ok('bridge','/product/api/persona',{persona,expected_workspace:first.workspace.id});assert.equal(role.persona,persona);for(let i=0;i<2;i++){assert.deepEqual((await f.ok('bridge','/product/api/state')).state,first.state);assert.deepEqual((await f.ok('bridge','/finance/api/state')).finance,finance.finance);}}
+ }finally{await f.close();}
+});
+test('a stale EarnPatch tab cannot change persona, reset, purchase or commission in a different workspace',async()=>{
+ const f=await fixture();try{const old=await f.ok('bridge','/product/api/state');const next=await f.api('bridge','/product/api/state',{},'');assert.equal(next.status,200);assert.notEqual(old.workspace.id,next.value.workspace.id);const finance=await f.ok('bridge','/finance/api/state');for(const [route,body]of [['/product/api/persona',{persona:'developer'}],['/product/api/reset',{}],['/product/api/transition',{actor:'merchant',action:'approve',payload:{id:'export',reviewed:true},operation_id:randomUUID()}],['/studio/api/step',{action:'commission',payload:{actor:'merchant'},operation_id:randomUUID()}],['/finance/api/action',{actor:'merchant',action:'create',operation_id:randomUUID()}],['/finance/api/handoff',{}]]){const r=await f.api('bridge',route,{...body,expected_workspace:old.workspace.id});assert.equal(r.status,400);assert.equal(r.value.error,'WORKSPACE_CONTEXT_CHANGED');}assert.deepEqual((await f.ok('bridge','/product/api/state')).state,next.value.state);assert.deepEqual((await f.ok('bridge','/finance/api/state')).finance,finance.finance);
+ }finally{await f.close();}
+});
+test('native-price and Paperlane token credits are separately observed, customer-specific and durable',async()=>{
+ const f=await fixture();try{await f.tokenReady();await f.step('customer','purchase',{id:'export',order:randomUUID()});const before=await f.ok('paperlane','/api/state');assert.equal(before.access.remaining,0);assert.equal(before.access.native_remaining,1);assert.equal(before.connection.kind,'handoff');const main=await f.ok('bridge','/product/api/state');assert.equal(before.workspace,main.workspace.id);assert.equal(before.connection.workspace_label,main.workspace.label);await f.ok('paperlane','/api/purchase',{request_id:randomUUID(),expected_scope:before.workspace,expected_subject:'alex'});const after=await f.ok('paperlane','/api/state');assert.equal(after.access.remaining,1);assert.equal(after.access.native_remaining,1);await f.ok('paperlane','/api/customer',{subject:'avery',expected_scope:before.workspace,expected_subject:'alex'});const other=await f.ok('paperlane','/api/state');assert.equal(other.access.remaining,0);assert.equal(other.access.native_remaining,0);await f.restart();assert.deepEqual((await f.ok('paperlane','/api/state')).connection,other.connection);assert.equal((await f.ok('bridge','/product/api/state')).credit_context.native_remaining,1);
+ }finally{await f.close();}
+});
+test('direct Paperlane entry is independent; an explicit handoff selects the approved workspace without free credits',async()=>{
+ const f=await fixture();try{await f.publish();const main=await f.ok('bridge','/product/api/state'),direct=await f.ok('paperlane','/api/state');assert.notEqual(direct.workspace,main.workspace.id);assert.equal(direct.connection.kind,'direct');assert.equal(direct.readiness.ready,false);await f.finance('merchant','import_token');const x=await f.ok('bridge','/finance/api/state');await f.finance('developer','accept_token',{expected_terms_hash:x.finance.sku.terms_hash});await f.connect();const linked=await f.ok('paperlane','/api/state');assert.equal(linked.workspace,main.workspace.id);assert.equal(linked.connection.kind,'handoff');assert.equal(linked.readiness.ready,true);assert.equal(linked.access.remaining,0);assert.equal(linked.access.native_remaining,0);
+ }finally{await f.close();}
+});

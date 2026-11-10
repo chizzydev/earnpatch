@@ -103,6 +103,13 @@ Ada,ada@example.test,customer_104,"=SUM(1,2)",42
 
 **Want to write your own commission instead?** In Studio, switch to Merchant and choose **Reset this workspace**, then create a new brief. Reset starts a different evaluation scenario in your current local or hosted session; it does not change the NEAR Testnet records. The built-in [start guide](http://127.0.0.1:4580/start) explains the difference between the existing invitation and a new draft.
 
+### Following a workspace across apps
+
+Studio shows the next responsible role; switching perspective never accepts or approves the work automatically. Each screen identifies its evaluation workspace. Open Paperlane from that workspace’s Finance page to create a linked tab; opening Paperlane directly starts an independent workspace. EarnPatch native-price credits and Paperlane token export credits are separate and usable only in their respective apps. Development commitments buy neither. All evaluation purchases remain simulated.
+
+If state loading fails, use **Retry loading workspace**. It reads current state without repeating a commercial action. After an unconfirmed action response, load current state before continuing; the original operation identity is retained. A tab whose workspace changed elsewhere must reload before acting.
+
+
 ## The money in one example
 
 EarnPatch keeps **development funding** separate from **feature sales**. An early supporter can fund work without automatically receiving export credits. A customer purchase creates an entitlement under the approved sales agreement, not a development-grant contribution.
@@ -244,7 +251,7 @@ npm test
 npm run verify
 ```
 
-`npm test` runs the build first. The accepted application passed **50/50 tests** during fresh-clone qualification and again on **November 6, 2026**. The merchant acceptance improvement adds eight focused API/security tests, bringing the application suite to **58 tests**. Browser acceptance is a separate gate. Browser, HTTPS, PostgreSQL, Docker and live read-only proof checks are separate commands below; they are not implied by the unit-test count.
+`npm test` runs the build first. The accepted application passed **50/50 tests** during fresh-clone qualification and again on **November 6, 2026**. The merchant acceptance improvement adds eight focused API/security tests, bringing that suite to 58 tests. Four workspace/credit-isolation regressions bring the current application suite to **62 tests**. Browser acceptance is a separate gate. Browser, HTTPS, PostgreSQL, Docker and live read-only proof checks are separate commands below; they are not implied by the unit-test count.
 
 | Command | Checks | Extra requirement |
 | --- | --- | --- |
@@ -254,6 +261,7 @@ npm run verify
 | `npm run verify:package` | Every required input for the generated Docker context | Run build first |
 | `npm run test:browser` | HTTPS evidence-page and Paperlane browser checks, real CSV download and mobile overflow | Installed Microsoft Edge and OpenSSL |
 | `npm run test:evaluation` | Connected merchant/developer/customer UI journeys, native and Paperlane CSV downloads, reload recovery | Installed Microsoft Edge |
+| `npm run test:journey` | State-load recovery on all four surfaces, role handoffs, lost-response recovery and workspace isolation in Edge | Installed Microsoft Edge |
 | `npm run test:acceptance` | Submitted-release merchant sandbox, authorization feedback and the subsequent Customer/Finance/Paperlane workflow | Installed Microsoft Edge |
 | `npm run test:https` | HTTPS and actual file downloads | OpenSSL |
 | `npm run test:wasm` | Accepted WASMs through the shipped host checks | No new Rust compilation |

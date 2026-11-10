@@ -1,0 +1,12 @@
+// Retries only the supplied state loader. It never replays a commercial action.
+export function workspaceLoader({load,render=()=>{},controls=()=>[],label='workspace'}){
+ const panel=document.createElement('section');panel.className='workspace-recovery';panel.setAttribute('aria-live','polite');panel.innerHTML='<strong></strong><p></p><button type="button" class="secondary" data-retry-workspace>Retry loading workspace</button>';
+ const main=document.querySelector('main');main.insertAdjacentElement('beforebegin',panel);let ready=false,pending=null;const disabled=new Map();
+ const protect=()=>{if(ready)return;for(const el of controls()){if(!disabled.has(el))disabled.set(el,el.disabled);el.disabled=true;el.dataset.workspaceBlocked='true';el.setAttribute('aria-disabled','true');}};
+ const display=(title,description,busy=false)=>{panel.hidden=false;panel.querySelector('strong').textContent=title;panel.querySelector('p').textContent=description;panel.setAttribute('aria-busy',String(busy));panel.querySelector('button').disabled=busy;protect();};
+ async function reload(){if(pending)return pending;ready=false;display('Loading your '+label+'…','Please wait. This loads current state only; it does not repeat a purchase, approval or payout.',true);pending=(async()=>{try{await load();ready=true;for(const [el,was]of disabled){if(el.isConnected){el.disabled=el.dataset.stateDisabled===undefined?was:el.dataset.stateDisabled==='true';delete el.dataset.workspaceBlocked;el.removeAttribute('aria-disabled');}}disabled.clear();panel.hidden=true;render();return true;}catch{ready=false;display('Your '+label+' could not load.','Check your connection, then retry loading. Existing state is retained. No purchase, approval or payout was requested by this load.');return false;}finally{pending=null;}})();return pending;}
+ panel.querySelector('button').onclick=()=>reload();
+ function failed(error){if(!error.uncertain&&!['WORKSPACE_CONTEXT_CHANGED','ROLE_MISMATCH','SESSION_EXPIRED','CUSTOMER_CONTEXT_CHANGED'].includes(error.message))return;ready=false;display(error.uncertain?'That action’s result is not confirmed.':'This view’s context changed.','Load the current state before continuing. Do not repeat a purchase, approval or payout just to refresh. Nothing is retried automatically.');panel.querySelector('button').textContent='Load current state';}
+ return {reload,protect,failed,get ready(){return ready;}};
+}
+export function contextLabel(workspace){return workspace?.label?'Workspace '+workspace.label.toUpperCase():'Current evaluation workspace';}
